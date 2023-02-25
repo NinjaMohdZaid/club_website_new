@@ -6,9 +6,9 @@
         $_POST['club_id'] = $_SESSION['auth']['club_id'];
         $rtn = $obj->add_product($_POST);
         if(!empty($rtn)){
-            $rtn_msg = "Product added successfully";
+            $rtn_msg = $obj->__('product_added_successfully',$_SESSION['auth']['default_lang']);
         }else{
-            $rtn_msg = "Product not added successfully";
+            $rtn_msg = $obj->__('product_not_added_successfully',$_SESSION['auth']['default_lang']);
         }
     }
 ?>
@@ -24,30 +24,30 @@
 </h6>
 <form action="" method="post" enctype="multipart/form-data" class="form">
     <div class="form-group">
-        <label for="product">Product</label>
+        <label for="product"><?php echo $obj->__('product',$_SESSION['auth']['default_lang']); ?></label>
         <input type="text" name="product" class="form-control" required>
     </div>
 
     <div class="form-group">
-        <label for="price">Price</label>
+        <label for="price"><?php echo $obj->__('price',$_SESSION['auth']['default_lang']); ?></label>
         <input type="number" step="0.001" name="price" class="form-control" required>
     </div>
 
     <div class="form-group">
-        <label for="description">Description</label>
+        <label for="description"><?php echo $obj->__('description',$_SESSION['auth']['default_lang']); ?></label>
         <textarea name="description" cols="30" rows="10" class="form-control"></textarea>
     </div>
 
     <div class="form-group">
-        <label for="amount">Amount</label>
+        <label for="amount"><?php echo $obj->__('amount',$_SESSION['auth']['default_lang']); ?></label>
         <input type="number" name="amount" class="form-control" min='0' required>
     </div>
 
 
     <div class="form-group">
-        <label for="category_id">Catagory</label>
+        <label for="category_id"><?php echo $obj->__('category',$_SESSION['auth']['default_lang']); ?></label>
         <select name="category_id" class="form-control" required>
-        <option value="" disabled>Select a Catagory</option>
+        <option value="" disabled><?php echo $obj->__('select_a_category',$_SESSION['auth']['default_lang']); ?></option>
 
         <?php foreach ($categories as $category) {?>
         <option value="<?php echo $category['category_id']; ?>"><?php echo $category['category']; ?></option>
@@ -56,24 +56,24 @@
     </div>
 
     <div class="form-group">
-        <label for="banner">Main Image Of Product</label>
+        <label for="banner"><?php echo $obj->__('main_image_of_product',$_SESSION['auth']['default_lang']); ?></label>
         <input type="file" name="banner" class="form-control">
     </div>
     <output id='image_file_output'></output>
 
     <div class="form-group">
-        <label for="multiple_images">Select Multiple Images Product</label>
+        <label for="multiple_images"><?php echo $obj->__('select_multiple_images_product',$_SESSION['auth']['default_lang']); ?></label>
         <input type="file" id='multiple_images' name="multiple_images[]" class="form-control" multiple>
     </div>
 
     <div class="form-group">
-        <label for="status">Status</label>
+        <label for="status"><?php echo $obj->__('status',$_SESSION['auth']['default_lang']); ?></label>
         <select name="status" class="form-control" required>
-            <option value="A">Active</option>
-            <option value="D">Disabled</option>
+            <option value="A"><?php echo $obj->__('active',$_SESSION['auth']['default_lang']); ?></option>
+            <option value="D"><?php echo $obj->__('disabled',$_SESSION['auth']['default_lang']); ?></option>
         </select>
     </div>
-    <input type="submit" value="Add Product" name="add_pdt" class="btn btn-block btn-primary">
+    <input type="submit" value="<?php echo $obj->__('add_product',$_SESSION['auth']['default_lang']); ?>" name="add_pdt" class="btn btn-block btn-primary">
 </form>
 <script>
     window.onload = function() {

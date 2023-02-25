@@ -3,17 +3,6 @@
         $obj->remove_game_from_club($_REQUEST['game_id'],$_SESSION['auth']['club_id']);
         header('Location:'.$_REQUEST['return_url']);
     }
-    if(isset($_POST['add_games'])){
-        if(!empty($_REQUEST['game_ids'])){            
-            if($obj->update_club_games($_SESSION['auth']['club_id'],$_POST['game_ids'])){
-                $rtnMsg = "Games added to the club";
-            }else{
-                $rtnMsg = "Failed to Add Games added to the club";
-            }
-        }else{
-            $rtnMsg = "Failed to Add Games added to the club";
-        }    
-    }
     $club_data = $obj->display_clubByID($_SESSION['auth']['club_id']);
     $_params = ['exclude_game_ids' => $club_data['game_ids']];
     list($games,) = $obj->display_games($_params,$_SESSION['auth']['default_lang']);
@@ -32,11 +21,11 @@
     ?>
     <thead>
         <tr>
-            <th>ID</th>
-            <th>Game</th>
-            <th>Game Image</th>
-            <th>Booking By</th>
-            <th>Action</th>
+            <th><?php echo $obj->__('id',$_SESSION['auth']['default_lang']); ?></th>
+            <th><?php echo $obj->__('game',$_SESSION['auth']['default_lang']); ?></th>
+            <th><?php echo $obj->__('game_image',$_SESSION['auth']['default_lang']); ?></th>
+            <th><?php echo $obj->__('booking_by',$_SESSION['auth']['default_lang']); ?></th>
+            <th><?php echo $obj->__('action',$_SESSION['auth']['default_lang']); ?></th>
         </tr>
     </thead>
 
@@ -56,18 +45,18 @@
             </td>
             <td>
                 <?php if($game['field_type'] == 'T'){
-                    echo '<a href="manage_tables.php?game_id='.$game['game_id'].'" class="btn btn-sm btn-warning">Total '.$obj->get_table_counts($game['game_id'],$_SESSION['auth']['club_id']).' Tables</a>';
+                    echo '<a href="manage_tables.php?game_id='.$game['game_id'].'" class="btn btn-sm btn-warning">'.$obj->__('total',$_SESSION['auth']['default_lang']) .' '.$obj->get_table_counts($game['game_id'],$_SESSION['auth']['club_id']).$obj->__('tables',$_SESSION['auth']['default_lang']).'</a>';
                 }elseif($game['field_type'] == 'G'){
-                    echo '<a href="manage_grounds.php?game_id='.$game['game_id'].'" class="btn btn-sm btn-warning">Total '.$obj->get_ground_counts($game['game_id'],$_SESSION['auth']['club_id']).' Grounds</a>';
+                    echo '<a href="manage_grounds.php?game_id='.$game['game_id'].'" class="btn btn-sm btn-warning">'.$obj->__('total',$_SESSION['auth']['default_lang']) .' '.$obj->get_ground_counts($game['game_id'],$_SESSION['auth']['club_id']).$obj->__('grounds',$_SESSION['auth']['default_lang']).'</a>';
                 }elseif($game['field_type'] == 'P'){
-                    echo '<a href="manage_pitches.php?game_id='.$game['game_id'].'" class="btn btn-sm btn-warning">Total '.$obj->get_pitch_counts($game['game_id'],$_SESSION['auth']['club_id']).' pitches</a>';
+                    echo '<a href="manage_pitches.php?game_id='.$game['game_id'].'" class="btn btn-sm btn-warning">'.$obj->__('total',$_SESSION['auth']['default_lang']) .' '.$obj->get_pitch_counts($game['game_id'],$_SESSION['auth']['club_id']).$obj->__('pitches',$_SESSION['auth']['default_lang']).'</a>';
                 }elseif($game['field_type'] == 'E'){
                     echo '<a href="#" class="btn btn-sm btn-warning">Total 0 Games</a>';
                 }elseif($game['field_type'] == 'M'){
-                    echo '<a href="manage_game_memberships.php?game_id='.$game['game_id'].'" class="btn btn-sm btn-warning">Total '.$obj->get_game_membership_counts($game['game_id'],$_SESSION['auth']['club_id']).' Memberships</a>';
+                    echo '<a href="manage_game_memberships.php?game_id='.$game['game_id'].'" class="btn btn-sm btn-warning">Total '.$obj->get_game_membership_counts($game['game_id'],$_SESSION['auth']['club_id']).$obj->__('memberships',$_SESSION['auth']['default_lang']).'</a>';
                 }
                 ?>
-                <a href="?action=remove_game&game_id=<?php echo $game['game_id'] ?>&return_url=<?php echo 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF']; ?>" class="btn btn-sm btn-danger">Remove From Club</a>
+                <a href="?action=remove_game&game_id=<?php echo $game['game_id'] ?>&return_url=<?php echo 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF']; ?>" class="btn btn-sm btn-danger"><?php echo $obj->__('remove_from_club',$_SESSION['auth']['default_lang']); ?></a>
             </td>
            
         </tr>
@@ -75,7 +64,9 @@
             }
         }else{ 
         ?>
-        <p>No Game Select For your club</p>
+        <p>
+        <?php echo $obj->__('no_game_select_for_your_club',$_SESSION['auth']['default_lang']); ?>
+        </p>
         <?php
             }
         ?>

@@ -6,12 +6,12 @@
     if(isset($_POST['add_games'])){
         if(!empty($_REQUEST['game_ids'])){            
             if($obj->update_club_games($_SESSION['auth']['club_id'],$_POST['game_ids'])){
-                $rtnMsg = "Games added to the club";
+                $rtnMsg = $obj->__('game_added_to_club',$_SESSION['auth']['default_lang']);
             }else{
-                $rtnMsg = "Failed to Add Games added to the club";
+                $rtnMsg = $obj->__('failed_to_add_games_added_to_club',$_SESSION['auth']['default_lang']);
             }
         }else{
-            $rtnMsg = "Failed to Add Games added to the club";
+            $rtnMsg = $obj->__('failed_to_add_games_added_to_club',$_SESSION['auth']['default_lang']);
         }    
     }
     $club_data = $obj->display_clubByID($_SESSION['auth']['club_id']);
@@ -22,7 +22,7 @@
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 
-<h2>Add Game Into Club</h2>
+<h2><?php echo $obj->__('add_games_into_club',$_SESSION['auth']['default_lang']); ?></h2>
 
 <h4 class="text-success"> <?php if(isset($rtnMsg)){ echo $rtnMsg; } ?> 
 
@@ -34,7 +34,7 @@
         if(!empty($games)){
     ?>
     <div class="games_list">
-        <label id="select_all" is_selected="N">Select All
+        <label id="select_all" is_selected="N"><?php echo $obj->__('select_all',$_SESSION['auth']['default_lang']); ?>
         </label>
             <div class="leaved_game_list">
             <?php 
@@ -52,7 +52,7 @@
         }else{
         ?>
     <div>
-        No Games Available to Choose For Your Club
+        <?php echo $obj->__('no_games_available_to_choose_for_your_club',$_SESSION['auth']['default_lang']); ?>
     </div>
     <?php
         }

@@ -24,7 +24,7 @@
 ?>
 
 
-<h2>Update Club</h2>
+<h2><?php echo $obj->__('update_club',$_SESSION['auth']['default_lang']); ?></h2>
 
 <h6 class="">
     <?php if(isset($up_msg)){ echo $up_msg;} ?>
@@ -34,67 +34,67 @@
 <form action="" method="post" enctype="multipart/form-data">
 
     <div class="form-group">
-        <label for="club">Club</label>
+        <label for="club"><?php echo $obj->__('club',$_SESSION['auth']['default_lang']); ?></label>
         <input type="text" name="club" class="form-control" value="<?php echo $club_data['club'] ?>">
     </div>
    
     <div class="form-group">
-        <label for="activities_desc">Club Games/Activities</label>
+        <label for="activities_desc"><?php echo $obj->__('club_games_or_activities',$_SESSION['auth']['default_lang']); ?></label>
         <textarea name="activities_desc" class="form-control" rows="6"><?php echo $club_data['activities_desc'] ?></textarea>
     </div>
 
     <div class="form-group">
-        <label for="history">Club History</label>
+        <label for="history"><?php echo $obj->__('club_history',$_SESSION['auth']['default_lang']); ?></label>
         <textarea name="history" class="form-control" rows="6"><?php echo $club_data['history'] ?></textarea>
     </div>
 
     <div class="form-group">
-        <label for="licence_copy">Upload Trade License Copy</label>
+        <label for="licence_copy"><?php echo $obj->__('upload_trade_license_copy',$_SESSION['auth']['default_lang']); ?></label>
         <?php if(!empty($club_data['licence_location'])){?>
             <div class="mb-3">
-                <?php echo '<a target="__blank" href="'.$club_data['licence_location'].'"><u>(1) File Attached Click to Read</u></a>' ?>
+                <?php echo '<a target="__blank" href="'.$club_data['licence_location'].'"><u>(1) '.$obj->__('file_attached_click_here_to_read',$_SESSION['auth']['default_lang']).'</u></a>' ?>
             </div>
         <?php }?>
         <input type="file" name="licence_copy" class="form-control">
     </div>
 
     <div class="form-group">
-        <label for="licence_expiry">Licence Expiry Date</label>
+        <label for="licence_expiry"><?php echo $obj->__('licence_expiry_date',$_SESSION['auth']['default_lang']); ?></label>
         <input type="datetime-local" required name="licence_expiry" value="<?php echo date("Y-m-d\TH:i:s", $club_data['licence_expiry']); ?>" class="form-control">
     </div>
 
     <div class="form-group">
-        <label for="address">Full Address</label>
+        <label for="address"><?php echo $obj->__('full_address',$_SESSION['auth']['default_lang']); ?></label>
         <textarea name="address" class="form-control" rows="6"><?php echo $club_data['address'] ?></textarea>
     </div>
 
     <div class="form-group">
-        <label for="city">City</label>
+        <label for="city"><?php echo $obj->__('city',$_SESSION['auth']['default_lang']); ?></label>
         <input type="text" name="city" class="form-control" value="<?php echo $club_data['city'] ?>">
     </div>
 
     <div class="form-group">
-        <label for="contact_person">Club Contact Person Name</label>
+        <label for="contact_person"><?php echo $obj->__('club_contact_person_name',$_SESSION['auth']['default_lang']); ?></label>
         <input type="text" name="contact_person" class="form-control" value="<?php echo $club_data['contact_person'] ?>">
     </div>
 
     <div class="form-group">
-        <label for="email">Email</label>
+        <label for="email"><?php echo $obj->__('email',$_SESSION['auth']['default_lang']); ?></label>
         <input type="email" name="email" class="form-control" value="<?php echo $club_data['email'] ?>">
     </div>
 
     <div class="form-group">
-        <label for="phone">Phone</label>
+        <label for="phone"><?php echo $obj->__('phone',$_SESSION['auth']['default_lang']); ?></label>
         <input type="phone" name="phone" class="form-control" value="<?php echo $club_data['phone'] ?>">
     </div>
 
     <div class="form-group">
-        <label for="website">Website</label>
+        <label for="website"><?php echo $obj->__('website',$_SESSION['auth']['default_lang']); ?></label>
         <input type="website" name="website" class="form-control" value="<?php echo $club_data['website'] ?>">
     </div>
 
     <div class="form-group">
-        <label for="banner">Upload Photo Of Club</label>
+        <label for="banner"><?php echo $obj->__('upload_photo_of_the_club',$_SESSION['auth']['default_lang']); ?></label>
         <?php if(!empty($club_data['image_location'])){?>
             <div class="mb-3">
                 <img src="../assets/files/clubs/images/<?php echo $club_data['club_id'].'/'.$club_data['image_location']; ?>" style="width: 80px;" >
@@ -113,7 +113,7 @@
     </output>
 
     <div class="form-group">
-        <label for="multiple_images">Select Images for club Gallery</label>
+        <label for="multiple_images"><?php echo $obj->__('select_images_for_club_gallery',$_SESSION['auth']['default_lang']); ?></label>
         <input type="file" id='multiple_images' name="multiple_images[]" class="form-control" multiple>
     </div>
 
@@ -125,28 +125,28 @@
     <?php } ?>
 
     <div class="form-group">
-        <label for="video">Upload Video of the club</label>
+        <label for="video"><?php echo $obj->__('upload_video_of_the_club',$_SESSION['auth']['default_lang']); ?></label>
         <input type="file" name="video" class="form-control" accept="video/*">
     </div>    
 
     <div class="form-group">
-        <label for="status">Satus</label>
+        <label for="status"><?php echo $obj->__('status',$_SESSION['auth']['default_lang']); ?></label>
         <select name="status" class="form-control">
-            <option value="A" <?php if($club_data['status'] == 'A'){echo 'selected';} ?>>Active</option>
-            <option value="D" <?php if($club_data['status'] == 'D'){echo 'selected';} ?>>Disabled</option>
+            <option value="A" <?php if($club_data['status'] == 'A'){echo 'selected';} ?>><?php echo $obj->__('active',$_SESSION['auth']['default_lang']); ?></option>
+            <option value="D" <?php if($club_data['status'] == 'D'){echo 'selected';} ?>><?php echo $obj->__('disabled',$_SESSION['auth']['default_lang']); ?></option>
         </select>
     </div>
 
     <input type="hidden" required name="saved_hash_pass" value="<?php echo $club_data['password'] ?>" class="form-control">
 
     <div class="form-group">
-        <label for="password">Password</label>
+        <label for="password"><?php echo $obj->__('password',$_SESSION['auth']['default_lang']); ?></label>
         <input type="password" required name="password" value="<?php echo $club_data['password'] ?>" class="form-control">
     </div>
 
     <input type="hidden" name="game_id" value="<?php echo $game_data['game_id'] ?>" >
 
-    <input type="submit" value="Update Club" name="update_club" class="btn btn-primary" >
+    <input type="submit" value="<?php echo $obj->__('update_club',$_SESSION['auth']['default_lang']); ?>" name="update_club" class="btn btn-primary" >
 
 </form>
 <script>

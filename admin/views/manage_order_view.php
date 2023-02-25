@@ -37,7 +37,7 @@
                 $products = unserialize($order['products_data']);
                 foreach ($products as $key => $product) {
                     $product_data = $obj->display_productByID($product['product_id'],$_SESSION['default_lang']);
-                    echo '<a href="edit_product.php?&product_id='.$product_data['product_id'].'">'.$product_data['product'].'</a> | '.$obj->__('select_multiple_images_product',$_SESSION['default_lang']).': '.$product['price'].'<br>';
+                    echo '<a href="edit_product.php?&product_id='.$product_data['product_id'].'">'.$product_data['product'].'</a> | '.$obj->__('price',$_SESSION['default_lang']).': '.$product['price'].'<br>';
                 }
             ?>
             

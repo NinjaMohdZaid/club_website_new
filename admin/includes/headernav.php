@@ -113,7 +113,7 @@ list($notifications,) = $obj->display_notifications();
                                <ul class="show-notification profile-notification">
                                    <li>
                                        <a href="?adminLogout=logout">
-                                       <i class="ti-layout-sidebar-left"></i> Logout
+                                       <i class="ti-layout-sidebar-left"></i> <?php echo $obj->__('logout',$_SESSION['default_lang']); ?>
                                    </a>
                                    </li>
                                </ul>

@@ -9,11 +9,11 @@
 <table class="table table-bordered table-striped">
     <thead>
         <tr>
-            <th>Special Offer Id</th>
-            <th>Special Offer Code</th>
-            <th>Special Offer Description</th>
-            <th>Special Offer Discount</th>
-            <th>Action</th>
+            <th><?php echo $obj->__('id',$_SESSION['auth']['default_lang']); ?></th>
+            <th><?php echo $obj->__('special_offer_code',$_SESSION['auth']['default_lang']); ?></th>
+            <th><?php echo $obj->__('description',$_SESSION['auth']['default_lang']); ?></th>
+            <th><?php echo $obj->__('special_offer_discount',$_SESSION['auth']['default_lang']); ?></th>
+            <th><?php echo $obj->__('action',$_SESSION['auth']['default_lang']); ?></th>
         </tr>
     </thead>
 
@@ -26,7 +26,7 @@
             <td> <?php echo $result['cupon_code'] ?></td>
             <td> <?php echo $result['description'] ?></td>
             <td> <?php echo $result['discount'] ?></td>
-            <td><a href="">Edit</a>  <a href="">Delete</a>  </td>
+            <td><a href=""><?php echo $obj->__('edit',$_SESSION['auth']['default_lang']); ?></a>  <a href=""><?php echo $obj->__('delete',$_SESSION['auth']['default_lang']); ?></a>  </td>
            
         </tr>
 

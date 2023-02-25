@@ -17,18 +17,18 @@
     }
    list($products,) =  $obj->display_products(['club_id'=>$_SESSION['auth']['club_id']],0,$_SESSION['default_lang']);
 ?>
-<h2>Manage Product </h2> 
+<h2><?php echo $obj->__('manage_products',$_SESSION['auth']['default_lang']); ?></h2> 
 <br>
 
 <table class="table table-bordered">
     <thead>
         <tr>
-            <th>ID</th>
-            <th>Product</th>
-            <th>Price</th>
-            <th>Product Image</th>
-            <th>Status</th>
-            <th>Action</th>
+            <th><?php echo $obj->__('id',$_SESSION['auth']['default_lang']); ?></th>
+            <th><?php echo $obj->__('product',$_SESSION['auth']['default_lang']); ?></th>
+            <th><?php echo $obj->__('price',$_SESSION['auth']['default_lang']); ?></th>
+            <th><?php echo $obj->__('product_image',$_SESSION['auth']['default_lang']); ?></th>
+            <th><?php echo $obj->__('status',$_SESSION['auth']['default_lang']); ?></th>
+            <th><?php echo $obj->__('action',$_SESSION['auth']['default_lang']); ?></th>
         </tr>
     </thead>
 
@@ -43,22 +43,22 @@
             <td> 
                 <?php 
                     if($pdt['status']=='D'){
-                        echo "Disabled";
+                        echo $obj->__('disabled',$_SESSION['auth']['default_lang']);
                         
                         ?>
-                        <a href="?status=A&&product_id=<?php echo $pdt['product_id']?>"  class="btn btn-sm btn-primary" >Active</a>
+                        <a href="?status=A&&product_id=<?php echo $pdt['product_id']?>"  class="btn btn-sm btn-primary" ><?php echo $obj->__('active',$_SESSION['auth']['default_lang']); ?></a>
                     <?php
                     }else{
-                        echo "Active";
+                        echo $obj->__('active',$_SESSION['auth']['default_lang']);
                        
                          ?>
-                            <a href="?status=D&&product_id=<?php echo $pdt['product_id'] ?>" class="btn btn-sm btn-warning">Disabled</a>
+                            <a href="?status=D&&product_id=<?php echo $pdt['product_id'] ?>" class="btn btn-sm btn-warning"><?php echo $obj->__('disabled',$_SESSION['auth']['default_lang']); ?></a>
                          <?php
                     }
                 ?>
             </td>
-            <td>   <a href="edit_product.php?&product_id=<?php echo $pdt['product_id'] ?>">Edit</a> <br>
-             <a href="?action=delete&&product_id=<?php echo $pdt['product_id'] ?>">Delete</a>  </td>
+            <td>   <a href="edit_product.php?&product_id=<?php echo $pdt['product_id'] ?>"><?php echo $obj->__('edit',$_SESSION['auth']['default_lang']); ?></a> <br>
+             <a href="?action=delete&&product_id=<?php echo $pdt['product_id'] ?>"><?php echo $obj->__('delete',$_SESSION['auth']['default_lang']); ?></a>  </td>
 
         </tr>
         <?php }?>
