@@ -35,7 +35,7 @@ list($notifications,) = $obj->display_notifications();
                         $logo = mysqli_fetch_assoc($logo_info);
 
                        ?>
-                           <img class="img-fluid" src="uploads/<?php echo $logo['img']; ?>" alt="Theme-Logo" /> 
+                           <img class="img-fluid" src="../assets/files/logo/<?php echo $logo['img']; ?>" alt="Theme-Logo" /> 
                        </a>
                        <a class="mobile-options">
                            <i class="ti-more"></i>

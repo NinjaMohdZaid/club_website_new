@@ -2,7 +2,7 @@
   
 
 <?php 
-list($sponsors,$search) = $obj->display_sponsors($_REQUEST,$_SESSION['auth']['default_lang']);
+list($sponsors,$search) = $obj->display_sponsors($_REQUEST,$_SESSION['default_lang']);
 
 if(isset($_GET['action'])){
     $get_id = $_GET['sponsor_id'];
@@ -20,18 +20,18 @@ if(isset($_GET['action'])){
 
 <?php if(!empty($sponsors)) { ?>
 <div>
-    <h2>Club Sponsors</h2>
+    <h2><?php echo $obj->__('club_sponsors',$_SESSION['default_lang']); ?></h2>
 
 <table class="table table-striped">
     <thead>
         <tr>
-            <th>Sponsor Id</th>
-            <th>Name</th>
-            <th>About</th>
-            <th>Care Value</th>
-            <th>Degree</th>
-            <th>Type</th>
-            <th>Tournament</th>
+            <th><?php echo $obj->__('id',$_SESSION['default_lang']); ?></th>
+            <th><?php echo $obj->__('name',$_SESSION['default_lang']); ?></th>
+            <th><?php echo $obj->__('about',$_SESSION['default_lang']); ?></th>
+            <th><?php echo $obj->__('care_value',$_SESSION['default_lang']); ?></th>
+            <th><?php echo $obj->__('degree',$_SESSION['default_lang']); ?></th>
+            <th><?php echo $obj->__('type',$_SESSION['default_lang']); ?></th>
+            <th><?php echo $obj->__('tournament',$_SESSION['default_lang']); ?></th>
         </tr>
     </thead>
 
@@ -42,12 +42,12 @@ if(isset($_GET['action'])){
             <td><?php echo '<b>'.$sponsor['sponsor_name'].'</b>' ?></td>
             <td><?php echo '<b>'.$sponsor['sponsor_about'].'</b>' ?></td>
             <td><?php echo '<b>'.$sponsor['care_value'].'</b>' ?></td>
-            <td><?php if($sponsor['sponsor_type'] == 'A') {echo "Degree1";}
-                      elseif($sponsor['sponsor_type'] == 'B'){echo "Degree2";}
-                      elseif($sponsor['sponsor_type'] == 'C'){echo "Degree3";} ?></td>
-            <td><?php if($sponsor['degree_of_care'] == 'A') {echo "Care1";}
-                      elseif($sponsor['degree_of_care'] == 'B'){echo "Care2";}
-                      elseif($sponsor['degree_of_care'] == 'C'){echo "Care3";} ?></td>
+            <td><?php if($sponsor['sponsor_type'] == 'A') {echo $obj->__('degree',$_SESSION['default_lang'])."1";}
+                      elseif($sponsor['sponsor_type'] == 'B'){echo $obj->__('degree',$_SESSION['default_lang'])."2";}
+                      elseif($sponsor['sponsor_type'] == 'C'){echo $obj->__('degree',$_SESSION['default_lang'])."3";} ?></td>
+            <td><?php if($sponsor['degree_of_care'] == 'A') {echo $obj->__('care',$_SESSION['default_lang'])."1";}
+                      elseif($sponsor['degree_of_care'] == 'B'){echo $obj->__('care',$_SESSION['default_lang'])."2";}
+                      elseif($sponsor['degree_of_care'] == 'C'){echo $obj->__('care',$_SESSION['default_lang'])."3";} ?></td>
             <td><?php echo '<b>'.$sponsor['tournament'].'</b>' ?></td>
            
         </tr>
@@ -60,6 +60,6 @@ if(isset($_GET['action'])){
 </div>
 <?php  }else{ ?>
 <div>
-    No Data found
+<?php echo $obj->__('no_data_found',$_SESSION['default_lang']); ?>
 </div>
 <?php  } ?>

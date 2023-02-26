@@ -1,14 +1,18 @@
 
 <?php 
-    
+    if(isset($_POST['update_game'])){
+        $is_updated = $obj->update_game($_POST,$_SESSION['default_lang']);
+        if(!empty($is_updated)){
+            $up_msg = $obj->__('game_updated_successfully',$_SESSION['default_lang']);
+        }else{
+            $up_msg = $obj->__('game_not_updated_successfully',$_SESSION['default_lang']);
+        }
+    }
     if(isset($_GET['action'])){
         if($_GET['action']=='edit'){
             $game_id = $_GET['game_id'];
             $game_data = $obj->display_gameByID($game_id,$_SESSION['default_lang']);
         }
-    }
-    if(isset($_POST['update_game'])){
-        $up_msg = $obj->update_game($_POST,$_SESSION['default_lang']);
     }
 ?>
 

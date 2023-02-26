@@ -784,9 +784,10 @@ class  adminback
         $min_players = $data['min_players'];
         $field_type = $data['field_type'];
         $status = $data['status'];
-        $time_slot = ($data['booking_by'] == 'T') ? $data['time_slot'] : '';
+        $time_slot = ($data['booking_by'] == 'T') ? $data['time_slot'] : 0;
         $subscription_type = ($data['booking_by'] == 'S') ? $data['subscription_type'] : '';
         $query = "UPDATE `games` SET `booking_by`='$booking_by',`subscription_type`='$subscription_type',`time_slot`='$time_slot',`field_type`='$field_type',`min_players`='$min_players',`status`= '$status' WHERE `game_id` = '$game_id'";
+        print_r($query);
         if (mysqli_query($this->connection, $query)) {
             $game = $data['game'];
             $query = "REPLACE INTO game_descriptions(`game_id`,`game`,`lang_code`) VALUES('$game_id','$game','$lang_code')";
@@ -806,9 +807,9 @@ class  adminback
                     }
                     $this->upload_image($target_dir . '/');
                 }
-                return "{$game} update as a game successfully!!";
+                return $game_id;
             } else {
-                return "Failed to update game";
+                return false;
             }
         }
     }
@@ -2433,26 +2434,29 @@ class  adminback
                     $result = mysqli_query($this->connection, $select_query);
                     $row = mysqli_fetch_assoc($result);
                     $pre_img = $row['img'];
-                    unlink("uploads/" . $pre_img);
+                    $target_dir = "../assets/files/logo";
+                    unlink($target_dir."/" . $pre_img);
 
 
                     $query = "UPDATE add_logo SET img='$lg_name' WHERE id=$lg_id";
 
                     if (mysqli_query($this->connection, $query)) {
-                        move_uploaded_file($lg_tmp, "uploads/" . $lg_name);
-                        $msg = "Logo  Updated successfully";
+                        $target_dir = "../assets/files/logo";
+                        if (!is_dir($target_dir)) mkdir($target_dir, 0777, true);
+                        move_uploaded_file($lg_tmp, $target_dir."/" . $lg_name);
+                        $msg = $this->__('logo_updated_successfully',$_SESSION['default_lang']);
                         return $msg;
                     }
                 } else {
-                    $msg = "Sorry !! Logo max height: 135px and width:36px, but you are trying {$width} px and {$height} px";
+                    $msg = $this->__('sorry_logo_max_height_135px_and_width_36px',$_SESSION['default_lang']);
                     return $msg;
                 }
             } else {
-                $msg = "File size should not be large 2MB";
+                $msg =  $this->__('file_size_should_not_be_larger_than_2mb',$_SESSION['default_lang']);
                 return $msg;
             }
         } else {
-            $msg = "File shoul be jpg or png formate";
+            $msg =  $this->__('file_should_be_jpg_or_png_formate',$_SESSION['default_lang']);
             return $msg;
         }
     }
@@ -3029,8 +3033,6 @@ class  adminback
             $result = mysqli_query($this->connection, $query);
             $tournaments = mysqli_fetch_all($result, MYSQLI_ASSOC);
         }
-        // print_r($tournaments);
-        // die;
         return [!empty($tournaments) ? $tournaments : [], !empty($params) ? $params : []];
     }
     

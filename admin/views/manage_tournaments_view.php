@@ -1,8 +1,4 @@
 <?php 
-
-list($tournaments,$search) = $obj->display_tournaments($_REQUEST,$_SESSION['auth']['default_lang']);
-
-
 if(isset($_GET['action'])){
     $get_id = $_GET['id'];
     if($_GET['action']=="activate"){
@@ -16,6 +12,7 @@ if(isset($_GET['action'])){
         header('Location:'.$_REQUEST['return_url']);
     }
 }
+list($tournaments,$search) = $obj->display_tournaments($_REQUEST,$_SESSION['default_lang']);
 ?>
 
 <?php if(!empty($tournaments)) { ?>
@@ -23,12 +20,12 @@ if(isset($_GET['action'])){
 <table class="table table-striped">
     <thead>
         <tr>
-            <th width="5%" >Tournament</th>
-            <th width="5%">Start Date to End Date<br>of Tournament</th>
-            <th>Type</th>
-            <th>Status</th>
-            <th>Entry fees</th>
-            <th>Sponsors</th>
+            <th width="5%" ><?php echo $obj->__('tournaments',$_SESSION['default_lang']); ?></th>
+            <th width="5%"><?php echo $obj->__('start_date_to_end_date_of_tournament',$_SESSION['default_lang']); ?></th>
+            <th><?php echo $obj->__('type',$_SESSION['default_lang']); ?></th>
+            <th><?php echo $obj->__('status',$_SESSION['default_lang']); ?></th>
+            <th><?php echo $obj->__('entry_fees',$_SESSION['default_lang']); ?></th>
+            <th><?php echo $obj->__('sponsors',$_SESSION['default_lang']); ?></th>
         </tr>
     </thead>
     <tbody>
@@ -41,9 +38,9 @@ if(isset($_GET['action'])){
                       elseif($tournament['type'] == 'W'){echo "Winner and Knockout System";} ?></td>
             <td>
             <?php if($tournament['status']=="D")
-                    echo "Disabled";
+                    echo $obj->__('disabled',$_SESSION['default_lang']);
                         else
-                    echo "Active";
+                    echo $obj->__('active',$_SESSION['default_lang']);
             ?>
             </td>
             <td><?php echo $tournament['fee'] ?></td>
@@ -58,6 +55,6 @@ if(isset($_GET['action'])){
 </div>
 <?php  }else{ ?>
 <div>
-    No Data found
+<?php echo $obj->__('no_data_found',$_SESSION['default_lang']); ?>
 </div>
 <?php  } ?>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Feb 25, 2023 at 06:22 PM
+-- Generation Time: Feb 26, 2023 at 08:27 AM
 -- Server version: 8.0.31
 -- PHP Version: 7.4.32
 
@@ -376,7 +376,7 @@ INSERT INTO `game_descriptions` (`game_id`, `game`, `lang_code`) VALUES
 (33, 'hhfde', 'ar'),
 (33, 'hhfde', 'en'),
 (35, 'this is game', 'ar'),
-(35, 'this is game', 'en'),
+(35, 'sthis is games', 'en'),
 (36, 'Ground Game', 'ar'),
 (36, 'Ground Game', 'en'),
 (38, 'this game 7', 'ar'),
@@ -752,7 +752,9 @@ INSERT INTO `products` (`product_id`, `amount`, `price`, `category_id`, `status`
 (17, 10, '49.00', 1, 'A', 0),
 (18, 37, '49.03', 1, 'A', 0),
 (21, 10, '49.00', 1, 'A', 0),
-(22, 2, '0.01', 1, 'A', 52);
+(22, 2, '0.01', 1, 'A', 52),
+(23, 14, '49.00', 1, 'A', 52),
+(24, 10, '49.00', 1, 'A', 52);
 
 -- --------------------------------------------------------
 
@@ -803,7 +805,11 @@ INSERT INTO `product_descriptions` (`product_id`, `product`, `description`, `lan
 (21, 'Test Product', 'dd', 'ar'),
 (21, 'Test Product', 'dd  ', 'en'),
 (22, 'Test Product', 'dd', 'ar'),
-(22, 'Test Product', 'dd ', 'en');
+(22, 'Test Product', 'dd ', 'en'),
+(23, 'Test Product', 'f', 'ar'),
+(23, 'Test Product', 'f', 'en'),
+(24, 'Test Product', 'ggg', 'ar'),
+(24, 'Test Product', 'ggg', 'en');
 
 -- --------------------------------------------------------
 
@@ -1509,7 +1515,7 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `product_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `slider`
