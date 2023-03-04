@@ -17,7 +17,7 @@
 ?>
 
 
-<h2><?php echo $obj->__('update_catagory',$_SESSION['default_lang']); ?></h2>
+<h2><?php echo $obj->__('update_category',$_SESSION['default_lang']); ?></h2>
 
 <h6 class="">
     <?php if(isset($up_msg)){ echo $up_msg;} ?>
@@ -28,7 +28,7 @@
 
 
     <div class="form-group">
-        <label for="category"><?php echo $obj->__('catagory_name',$_SESSION['default_lang']); ?></label>
+        <label for="category"><?php echo $obj->__('category_name',$_SESSION['default_lang']); ?></label>
         <input type="text" name="category" class="form-control" value="<?php echo $cata['category'] ?>">
     </div>
 

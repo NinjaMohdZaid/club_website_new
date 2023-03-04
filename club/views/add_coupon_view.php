@@ -54,7 +54,7 @@
 
     <div class="form-group">
        
-        <input type="submit" name="cuopon_add" class="btn btn-primary" >
+        <input type="submit" value="<?php echo $obj->__('add_offer',$_SESSION['auth']['default_lang']); ?>" name="cuopon_add" class="btn btn-primary" >
     </div>       
     </form>
 </div>

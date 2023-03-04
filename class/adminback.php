@@ -2962,7 +2962,6 @@ class  adminback
             return false;
         }
     }
-    //Danish add_tournament
     function add_tournament($data,$club_id)
     {
      
@@ -3033,6 +3032,8 @@ class  adminback
             $result = mysqli_query($this->connection, $query);
             $tournaments = mysqli_fetch_all($result, MYSQLI_ASSOC);
         }
+        // print_r($tournaments);
+        // die;
         return [!empty($tournaments) ? $tournaments : [], !empty($params) ? $params : []];
     }
     
@@ -3167,7 +3168,7 @@ class  adminback
         $condition .= " AND sponsor_description.lang_code = '$lang_code'";
         $join .= " LEFT JOIN sponsor_description ON sponsor_description.sponsor_id = sponsors.sponsor_id";
 
-        if($params['admin_sponsors']){
+        if(!empty($params['admin_sponsors'])){
             $condition .= " AND sponsors.club_id = '0'";
         }else{
             $join .= " INNER JOIN tournaments_descriptions ON sponsors.tournament_id = tournaments_descriptions.t_id";
@@ -3244,5 +3245,22 @@ class  adminback
             }
         }
     }
-    
+    // Dan changes
+    function display_sponsors_by_tournament_id($tournament_id, $lang_code = 'en')
+    {
+        $condition = $limit = $join = '';
+        $condition .= " AND sponsors.tournament_id = '$tournament_id'";
+        $fields = "sponsors.*,sponsor_description.sponsor_name,sponsor_description.sponsor_about";
+        $condition .= " AND sponsor_description.lang_code = '$lang_code'";
+        $join .= " LEFT JOIN sponsor_description ON sponsor_description.sponsor_id = sponsors.sponsor_id";
+        
+        $query = "SELECT $fields FROM sponsors $join where 1 $condition";
+
+        if (mysqli_query($this->connection, $query)) {
+            $result = mysqli_query($this->connection, $query);
+            $sponsors = mysqli_fetch_all($result, MYSQLI_ASSOC);
+        }
+        return $sponsors;
+    }
+
 }

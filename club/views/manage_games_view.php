@@ -39,9 +39,9 @@
             <td><?php if(!empty($game['image_location'])){?>
                 <img src="../assets/files/games/images/<?php echo $game['game_id'].'/'.$game['image_location']; ?>" style="width: 80px;" >
                 <?php }?></td>
-            <td><?php if($game['booking_by'] == 'H') echo 'Shot';
-                    elseif($game['booking_by'] == 'M') echo 'Monthly';
-                    elseif($game['booking_by'] == 'T') echo 'Time'; ?>
+            <td><?php if($game['booking_by'] == 'H') echo $obj->__('shot',$_SESSION['auth']['default_lang']);
+                    elseif($game['booking_by'] == 'M') echo $obj->__('monthly',$_SESSION['auth']['default_lang']);
+                    elseif($game['booking_by'] == 'T') echo $obj->__('time',$_SESSION['auth']['default_lang']); ?>
             </td>
             <td>
                 <?php if($game['field_type'] == 'T'){

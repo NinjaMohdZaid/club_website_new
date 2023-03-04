@@ -48,7 +48,7 @@ list($jobs,$search) = $obj->display_jobs($_REQUEST,$_SESSION['auth']['default_la
                     if($job['status']=="D")
                     {echo $obj->__('disabled',$_SESSION['auth']['default_lang']);
                 ?> 
-                    <a href="?action=activate&job_id=<?php echo $job['job_id'] ?>&return_url=<?php echo 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF']; ?>" class="btn btn-sm btn-success"><?php echo $obj->__('make_actve',$_SESSION['auth']['default_lang']); ?></a>
+                    <a href="?action=activate&job_id=<?php echo $job['job_id'] ?>&return_url=<?php echo 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF']; ?>" class="btn btn-sm btn-success"><?php echo $obj->__('make_active',$_SESSION['auth']['default_lang']); ?></a>
                     <?php
                 } 
                 else{echo $obj->__('active',$_SESSION['auth']['default_lang']);

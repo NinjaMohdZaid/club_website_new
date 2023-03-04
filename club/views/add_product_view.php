@@ -13,7 +13,7 @@
     }
 ?>
 
-<h2>Add Product</h2>
+<h2><?php echo $obj->__('add_product',$_SESSION['auth']['default_lang']); ?></h2>
 <h6 class="text-success">
    <?php 
      if(isset($rtn_msg)){

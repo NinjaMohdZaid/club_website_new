@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Feb 26, 2023 at 08:27 AM
+-- Generation Time: Mar 04, 2023 at 02:45 PM
 -- Server version: 8.0.31
 -- PHP Version: 7.4.32
 
@@ -185,7 +185,7 @@ INSERT INTO `clubs` (`club_id`, `address`, `city`, `contact_person`, `email`, `p
 (49, '', 'Moradabad', 'Mohd Zaid', 'admindfef@gmail.com', '776767776767', 'http://www.comp.com', 'D', '827ccb0eea8a706c4c34a16891f84e7b', 1674991923, 'en', '', 0, 0),
 (50, '', 'Moradabad', 'Mohd Zaid', 'admindfef@gmail.com', '77676777676733', 'http://www.comp.com', 'D', '827ccb0eea8a706c4c34a16891f84e7b', 1674992297, 'en', '15,16,19', 0, 1),
 (51, '', 'Moradabad', 'Mohd Zaid', 'admin@gmail.com', '975995567', 'http://www.comp.com', 'D', '827ccb0eea8a706c4c34a16891f84e7b', 1675007566, 'en', '15', 0, 4),
-(52, '', 'Moradabad', 'Mohd Zaid', 'admin55555@gmail.com', '9759955376', 'http://www.comp.com', 'D', 'e10adc3949ba59abbe56e057f20f883e', 1675445913, 'en', '42,41,40,35,36,38', 0, 1),
+(52, '', 'Moradabad', 'Mohd Zaid', 'admin55555@gmail.com', '9759955376', 'http://www.comp.com', 'D', 'e10adc3949ba59abbe56e057f20f883e', 1675445913, 'ar', '42,41,40,35,36,38', 0, 1),
 (53, '', 'Moradabad', 'Mohd Zaid', '4555@gmail.com', '97599555656', 'http://www.comp.com', 'D', '827ccb0eea8a706c4c34a16891f84e7b', 1675448261, 'en', '15,21,22,23,24,25,26,27,28,29,30,31', 0, 4),
 (55, 'Moradabad,Uttar Pradesh', 'Moradabad', 'Mohd Zaid', 'adeeeeemin@gmail.com', '097554444376', 'http://www.comp.com', 'A', '81dc9bdb52d04dc20036dbd8313ed055', 1676476570, 'en', NULL, 1676503380, 0),
 (56, 'Moradabad,Uttar Pradesh', 'Moradabad', 'Mohd Zaid', 'admggggggin@gmail.com', '09759955376', 'http://www.comp.com', 'A', '81dc9bdb52d04dc20036dbd8313ed055', 1676477196, 'en', NULL, 1676464560, 5),
@@ -615,7 +615,7 @@ CREATE TABLE `jobs` (
 
 INSERT INTO `jobs` (`job_id`, `type`, `salary`, `show_company_name`, `status`, `timestamp`, `club_id`) VALUES
 (3, 'C', '2000.00', 'Y', 'A', 1672553594, 0),
-(6, 'F', '5455.00', 'A', 'Y', 1675590025, 52);
+(6, 'F', '5455.00', 'A', 'D', 1675590025, 52);
 
 -- --------------------------------------------------------
 
@@ -1545,7 +1545,7 @@ ALTER TABLE `tournaments`
 -- AUTO_INCREMENT for table `translations`
 --
 ALTER TABLE `translations`
-  MODIFY `translation_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `translation_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `users`

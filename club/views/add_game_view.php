@@ -46,7 +46,7 @@
             }
             ?>
             </div>
-        <input type="submit" value="Add Selected Game In Club" name="add_games" class="btn btn-primary" >
+        <input type="submit" value="<?php echo $obj->__('add_selected_game_in_club',$_SESSION['auth']['default_lang']); ?>" name="add_games" class="btn btn-primary" >
     </div>
     <?php
         }else{
