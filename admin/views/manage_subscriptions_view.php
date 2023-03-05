@@ -31,7 +31,6 @@ if(isset($_GET['action'])){
         <tr>
             <th><?php echo $obj->__('id',$_SESSION['default_lang']); ?></th>
             <th><?php echo $obj->__('subscription',$_SESSION['default_lang']); ?></th>
-            <th><?php echo $obj->__('description',$_SESSION['default_lang']); ?></th>
             <th><?php echo $obj->__('validity',$_SESSION['default_lang']); ?></th>
             <th><?php echo $obj->__('prices',$_SESSION['default_lang']); ?></th>
             <th><?php echo $obj->__('status',$_SESSION['default_lang']); ?></th>
@@ -44,7 +43,6 @@ if(isset($_GET['action'])){
         <tr>
             <td><?php echo $subscription['subscription_id'] ?></td>
             <td><?php echo $subscription['subscription'] ?></td>
-            <td><?php echo $subscription['description'] ?></td>
             <td><?php if($subscription['validity_months'] == '1') echo '1 '.$obj->__('month',$_SESSION['default_lang']);
                     elseif($subscription['validity_months'] == '2') echo '2 '.$obj->__('months',$_SESSION['default_lang']);
                     elseif($subscription['validity_months'] == '3') echo '3 '.$obj->__('months',$_SESSION['default_lang']);

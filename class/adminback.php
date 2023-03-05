@@ -1269,7 +1269,7 @@ class  adminback
             $condition .= " AND subscription_descriptions.subscription LIKE %" . trim($params['subscription']) . "%";
         }
         if (!empty($params['status'])) {
-            $condition .= " AND subscriptions.status = " . $params['status'];
+            $condition .= " AND subscriptions.status = '".$params['status']."'";
         }
         $query = "SELECT $fields FROM subscriptions $join where 1 $condition";
         if (mysqli_query($this->connection, $query)) {
