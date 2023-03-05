@@ -8,7 +8,7 @@
     list($games,) = $obj->display_games($_params,$_SESSION['auth']['default_lang']);
 
 ?>
-<h2>Games In The Club</h2>
+<h2><?php echo $obj->__('games_in_the_club',$_SESSION['auth']['default_lang']); ?></h2>
 <table class="table table-striped">
     <?php
      if(!empty($club_data['game_ids'])){

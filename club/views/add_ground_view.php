@@ -9,23 +9,23 @@
 ?>
 
 
-<h2>Add Ground For <?php echo $game_data['game'] ?></h2>
+<h2><?php echo $obj->__('add_ground_for',$_SESSION['auth']['default_lang']); ?><?php echo $game_data['game'] ?></h2>
 
 <h4 class="text-success"> <?php if(isset($rtnMsg)){ echo $rtnMsg; } ?> 
 
 </h4>
 <form action="" method="post" enctype="multipart/form-data">
     <div class="form-group">
-        <label for="ground_name">Ground</label>
+        <label for="ground_name"><?php echo $obj->__('ground',$_SESSION['auth']['default_lang']); ?></label>
         <input type="text" name="ground_name" required class="form-control">
     </div>
     <div class="form-group">
-        <label for="banner">Ground Image</label>
+        <label for="banner"><?php echo $obj->__('ground_image',$_SESSION['auth']['default_lang']); ?></label>
         <input type="file" name="banner" class="form-control" required>
     </div>
     <div class="form-group">
-        <label for="price">Price</label>
+        <label for="price"><?php echo $obj->__('price',$_SESSION['auth']['default_lang']); ?></label>
         <input type="number" step="0.01" required name="price" class="form-control">
     </div>
-    <input type="submit" value="Add Ground" name="add_ground" class="btn btn-primary">
+    <input type="submit" value="<?php echo $obj->__('add_ground',$_SESSION['auth']['default_lang']); ?>" name="add_ground" class="btn btn-primary">
 </form>

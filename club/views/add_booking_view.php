@@ -40,7 +40,7 @@
     <?php
     }
 ?>        
-<h2>Book <?php echo $ground_data['table_name']; ?> For <?php echo $game_data['game'] ?> Game</h2>
+<h2>Book <?php echo $ground_data['table_name']; ?> For <?php echo $game_data['game'] ?> <?php echo $obj->__('game',$_SESSION['auth']['default_lang']); ?></h2>
 <?php }?>
 
 <?php if($game_data['field_type']=='P'){
@@ -51,7 +51,7 @@
     <?php
     }
 ?>        
-<h2>Book <?php echo $pitch_data['pitch_name']; ?> For <?php echo $game_data['game'] ?> Game</h2>
+<h2><?php echo $obj->__('book',$_SESSION['auth']['default_lang']); ?> <?php echo $pitch_data['pitch_name']; ?> <?php echo $obj->__('for',$_SESSION['auth']['default_lang']); ?> <?php echo $game_data['game'] ?> <?php echo $obj->__('game',$_SESSION['auth']['default_lang']); ?></h2>
 <?php }?>
 
 <?php if($game_data['field_type']=='G'){
@@ -62,7 +62,7 @@
     <?php
     }
 ?>        
-<h2>Book <?php echo $ground_data['ground_name']; ?> For <?php echo $game_data['game'] ?> Game</h2>
+<h2><?php echo $obj->__('book',$_SESSION['auth']['default_lang']); ?> <?php echo $ground_data['ground_name']; ?> <?php echo $obj->__('for',$_SESSION['auth']['default_lang']); ?> <?php echo $game_data['game'] ?> <?php echo $obj->__('game',$_SESSION['auth']['default_lang']); ?></h2>
 <?php }?>
 
 <!-- ground type -->
@@ -74,7 +74,7 @@
     <?php
     }
 ?>        
-<h2>Book <?php echo $table_data['table_name']; ?> For <?php echo $game_data['game'] ?> Game</h2>
+<h2><?php echo $obj->__('book',$_SESSION['auth']['default_lang']); ?> <?php echo $table_data['table_name']; ?> <?php echo $obj->__('for',$_SESSION['auth']['default_lang']); ?> <?php echo $game_data['game'] ?> <?php echo $obj->__('game',$_SESSION['auth']['default_lang']); ?></h2>
 <?php }?>
 <!-- pitch type -->
 <?php
@@ -86,7 +86,7 @@ if($game_data['field_type']=='M'){
     <?php
     }
 ?>        
-<h2>Book <?php echo $membership_data['membership_name']; ?> For <?php echo $game_data['game'] ?> Game</h2>
+<h2><?php echo $obj->__('book',$_SESSION['auth']['default_lang']); ?> <?php echo $membership_data['membership_name']; ?> <?php echo $obj->__('for',$_SESSION['auth']['default_lang']); ?> <?php echo $game_data['game'] ?> <?php echo $obj->__('game',$_SESSION['auth']['default_lang']); ?></h2>
 <?php }?>
 
 <h4 class="text-success"> <?php if(isset($rtnMsg)){ echo $rtnMsg; } ?> 
@@ -97,30 +97,30 @@ if($game_data['field_type']=='M'){
     <input type="hidden" name="object_id" value="<?php echo $obect_id; ?>" required>
     <input type="hidden" name="object" value="<?php echo $object; ?>" required>
     <div class="form-group">
-        <label for="name">Name</label>
+        <label for="name"><?php echo $obj->__('name',$_SESSION['auth']['default_lang']); ?></label>
         <input type="text" name="name" required class="form-control">
     </div>
 
     <div class="form-group">
-        <label for="email">Email</label>
+        <label for="email"><?php echo $obj->__('email',$_SESSION['auth']['default_lang']); ?></label>
         <input type="email" name="email" required class="form-control">
     </div>
 
     <div class="form-group">
-        <label for="phone">Phone</label>
+        <label for="phone"><?php echo $obj->__('phone',$_SESSION['auth']['default_lang']); ?></label>
         <input type="text" name="phone" required class="form-control">
     </div>
 
     <div class="form-group">
-        <label for="booking_from">Booking From</label>
+        <label for="booking_from"><?php echo $obj->__('booking_from',$_SESSION['auth']['default_lang']); ?></label>
         <input type="datetime-local" required name="booking_from" class="form-control">
     </div>
 
     <div class="form-group">
-        <label for="booking_to">Booking To</label>
+        <label for="booking_to"><?php echo $obj->__('booking_to',$_SESSION['auth']['default_lang']); ?></label>
         <input type="datetime-local" required name="booking_to" class="form-control">
     </div>
 
-    <input type="submit" value="Book Now" name="add_booking" class="btn btn-primary" >
+    <input type="submit" value="<?php echo $obj->__('book_now',$_SESSION['auth']['default_lang']); ?>" name="add_booking" class="btn btn-primary" >
 
 </form>

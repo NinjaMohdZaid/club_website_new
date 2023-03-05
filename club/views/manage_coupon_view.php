@@ -4,7 +4,7 @@
     
 ?>
 
-<h2>Manage Special Offer</h2>
+<h2><?php echo $obj->__('manage_special_offers',$_SESSION['auth']['default_lang']); ?></h2>
 
 <table class="table table-bordered table-striped">
     <thead>
