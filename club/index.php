@@ -7,6 +7,7 @@
         if(!empty($club_data)){
             $_SESSION['auth']['club_id'] = $club_data['club_id'];
             $_SESSION['auth']['email'] = $club_data['email'];
+            $_SESSION['auth']['club_type'] = $club_data['type'];
             $_SESSION['auth']['default_lang'] = $club_data['default_lang'];
             if(!empty($_SESSION['auth']['club_id'])){
                 header("location:dashboard.php");

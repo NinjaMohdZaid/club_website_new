@@ -451,8 +451,9 @@ class  adminback
         $subscription_id = $data['subscription_id'];
         $licence_expiry = strtotime($data['licence_expiry']);
         $timestamp = time();
+        $type = $data['type'];
         $languages = array('en', 'ar');
-        $query = "INSERT INTO `clubs`( `address`,`city`, `contact_person`, `email`,`phone`,`website`,`status`,`password`,`timestamp`,`licence_expiry`,`subscription_id`) VALUES ('$address','$city', '$contact_person','$email','$phone','$website','$status','$password','$timestamp','$licence_expiry','$subscription_id')";
+        $query = "INSERT INTO `clubs`( `address`,`city`, `contact_person`, `email`,`phone`,`website`,`status`,`password`,`timestamp`,`licence_expiry`,`subscription_id`,`type`) VALUES ('$address','$city', '$contact_person','$email','$phone','$website','$status','$password','$timestamp','$licence_expiry','$subscription_id','$type')";
         if(mysqli_query($this->connection, $query)) {
             $club_id = $this->connection->insert_id; //cpasswordlub_id
             $club = $data['club'];
@@ -523,8 +524,9 @@ class  adminback
         } else {
             $password = md5($data['password']);
         }
+        $type = $data['type'];
         $licence_expiry = strtotime($data['licence_expiry']);
-        $query = "UPDATE `clubs` SET `address`='$address',`city`='$city',`contact_person`='$contact_person',`email`='$email',`phone`='$phone',`website`='$website',`status`= '$status',`password`='$password',`licence_expiry`='$licence_expiry' WHERE `club_id` = '$club_id'";
+        $query = "UPDATE `clubs` SET `address`='$address',`city`='$city',`contact_person`='$contact_person',`email`='$email',`phone`='$phone',`website`='$website',`status`= '$status',`password`='$password',`licence_expiry`='$licence_expiry',`type`='$type' WHERE `club_id` = '$club_id'";
         if (mysqli_query($this->connection, $query)) {
             $club = $data['club'];
             $activities_desc = $data['activities_desc'];
@@ -1806,6 +1808,22 @@ class  adminback
         $result = mysqli_query($this->connection, $query);
         $data = mysqli_fetch_assoc($result);
         $dashboard_data['total_tournaments'] = $data['total_tournaments'];
+        $query = "SELECT COUNT(*) as total_products FROM products WHERE 1 $condition";
+        $result = mysqli_query($this->connection, $query);
+        $data = mysqli_fetch_assoc($result);
+        $dashboard_data['total_products'] = $data['total_products'];
+        $query = "SELECT COUNT(*) as total_jobs FROM jobs WHERE 1 $condition";
+        $result = mysqli_query($this->connection, $query);
+        $data = mysqli_fetch_assoc($result);
+        $dashboard_data['total_jobs'] = $data['total_jobs'];
+        $query = "SELECT COUNT(*) as total_games FROM games WHERE 1 $_condition";
+        $result = mysqli_query($this->connection, $query);
+        $data = mysqli_fetch_assoc($result);
+        $dashboard_data['total_games'] = $data['total_games'];
+        $query = "SELECT COUNT(*) as total_special_offers FROM cupon WHERE 1 $condition";
+        $result = mysqli_query($this->connection, $query);
+        $data = mysqli_fetch_assoc($result);
+        $dashboard_data['total_special_offers'] = $data['total_special_offers'];
         return $dashboard_data;
     }
     function display_bookingByID($id, $lang_code = 'en')
@@ -1878,7 +1896,8 @@ class  adminback
         }else{
             $club_id = 0;
         }
-        $query = "INSERT INTO `products`(`amount`,`price`,`category_id`,`status`,`club_id`) VALUES ('$amount','$price','$category_id','$status','$club_id')";
+        $timestamp = time();
+        $query = "INSERT INTO `products`(`amount`,`price`,`category_id`,`status`,`club_id`,`timestamp`) VALUES ('$amount','$price','$category_id','$status','$club_id','$timestamp')";
 
         if (mysqli_query($this->connection, $query)) {
             $product_id = $this->connection->insert_id; //product_id
@@ -2978,11 +2997,14 @@ class  adminback
         $tournament_start_date = strtotime($data['tournament_start_date']);
         $tournament_status = $data['tournament_status'];
         $is_sponser = $data['is_sponser'];
-    
+        $free_entry = $data['free_entry'];
+        if($free_entry == 'Y'){
+            $tournament_entry_fee = 0;
+        }    
         $languages = array('en', 'ar');
 
-        $query = "INSERT INTO `tournaments`( `type`, `tournament_start_date`,`reg_start_date`,`reg_end_date`,`status`,`fee`,`is_sponser`,`club_id`,`timestamp`) 
-        VALUES ('$tournament_type','$tournament_start_date','$tournament_reg_start_date','$tournament_end_date','$tournament_status','$tournament_entry_fee','$is_sponser','$club_id','$timestamp')";
+        $query = "INSERT INTO `tournaments`( `type`, `tournament_start_date`,`reg_start_date`,`reg_end_date`,`status`,`fee`,`is_sponser`,`club_id`,`free_entry`,`timestamp`) 
+        VALUES ('$tournament_type','$tournament_start_date','$tournament_reg_start_date','$tournament_end_date','$tournament_status','$tournament_entry_fee','$is_sponser','$club_id','$free_entry','$timestamp')";
         if (mysqli_query($this->connection, $query)) {
             $tournament_id = $this->connection->insert_id; //tournament_id
             $tournament = $data['tournament'];
@@ -3074,8 +3096,12 @@ class  adminback
         $reg_end_date = strtotime($data['reg_end_date']);
         $tournament_status = $data['tournament_status'];
         $is_sponser = $data['is_sponser'];
+        $free_entry = $data['free_entry'];
+        if($free_entry == 'Y'){
+            $tournament_entry_fee = 0;
+        }  
        
-        $query = "UPDATE `tournaments` SET `type`='$tournament_type',`tournament_start_date`='$tournament_start_date',`reg_start_date`='$reg_start_date',`reg_end_date`='$reg_end_date',`status`= '$tournament_status', `fee`= '$tournament_entry_fee', `is_sponser`= '$is_sponser' WHERE `t_id` = '$id'";
+        $query = "UPDATE `tournaments` SET `type`='$tournament_type',`tournament_start_date`='$tournament_start_date',`reg_start_date`='$reg_start_date',`reg_end_date`='$reg_end_date',`status`= '$tournament_status', `fee`= '$tournament_entry_fee', `is_sponser`= '$is_sponser',`free_entry`='$free_entry' WHERE `t_id` = '$id'";
         if (mysqli_query($this->connection, $query)) {
             $tournament = $data['tournament'];
             $tournament_history = $data['tournament_history'];

@@ -45,8 +45,12 @@
         <label for="tournament_type"><input type="radio" name="tournament_type"  value="W"><?php echo $obj->__('winner_and_knockout_system',$_SESSION['auth']['default_lang']); ?></label>
     </div>
     <div class="form-group">
+        <input type="hidden" name="free_entry" value="N">
+        <label for="free_entry"><input id="free_entry_input" type="checkbox" name="free_entry" value="Y"><?php echo $obj->__('free_entry',$_SESSION['auth']['default_lang']); ?></label>
+    </div>
+    <div class="form-group" id="tournament_entry_fee">
         <label for="tournament_entry_fee"><?php echo $obj->__('entry_fees',$_SESSION['auth']['default_lang']); ?></label>
-        <input type="number" step="0.01" name="tournament_entry_fee" required class="form-control">
+        <input type="number" step="0.01" id="tournament_entry_fee_value" name="tournament_entry_fee" required class="form-control">
     </div>
     <div class="form-group">
         <label for="tournament_start_date"><?php echo $obj->__('tournament_start_date',$_SESSION['auth']['default_lang']); ?></label>
@@ -71,9 +75,6 @@
     <label for="is_sponser"><?php echo $obj->__('do_you_have_sponsors?',$_SESSION['auth']['default_lang']); ?></label><br>
         <label for="is_sponser"><input type="radio" id="is_sponser_yes" name="is_sponser" value="Y" > <?php echo $obj->__('yes',$_SESSION['auth']['default_lang']); ?></label>
         <label for="is_sponser"><input type="radio" id="is_sponser_no" name="is_sponser"  value="N" checked> <?php echo $obj->__('no',$_SESSION['auth']['default_lang']); ?></label>
-        <!-- <input type="hidden" name="is_sponser" value="N">
-        <label for="is_sponser">Do you have a sponsor?</label>
-        <input id="is_sponser" type="checkbox" name="is_sponser" value="Y"> -->
     </div>
     
     <div class="sponsors_div" Style="display:none;">
@@ -118,8 +119,19 @@
         <input type="submit" value="<?php echo $obj->__('add_tournament',$_SESSION['auth']['default_lang']); ?>" name="update_tournament" class="btn btn-primary">
     </div>
 </form>
+<style>
+    .hidden{
+        display: none;
+    }
+</style>
 
 <script>
+    $('#free_entry_input').click(function(){
+            $('#tournament_entry_fee').toggleClass('hidden');
+            if($(this).prop("checked") == true){
+                $('#tournament_entry_fee_value').val('0');
+            }
+        });
     $('#is_sponser_yes').click(function() {
         $('.sponsors_div input').attr("required", true);
         // $('.sponsors_div textarea').attr("required", true);

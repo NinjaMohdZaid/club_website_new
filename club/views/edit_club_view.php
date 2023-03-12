@@ -1,17 +1,14 @@
 
 <?php 
     
-
     if(isset($_POST['update_club'])){
         $_POST['club_id'] = $_SESSION['auth']['club_id'];
         $up_msg = $obj->update_club($_POST,$_SESSION['auth']['default_lang']);
     }
-    if(isset($_GET['action'])){
-        if($_GET['action']=='edit'){
-            $club_id = $_SESSION['auth']['club_id'];
-            $club_data = $obj->display_clubByID($club_id,$_SESSION['auth']['default_lang']);
-        }
-    }
+   
+    $club_id = $_SESSION['auth']['club_id'];
+    $club_data = $obj->display_clubByID($club_id,$_SESSION['auth']['default_lang']);
+      
     if(!empty($_REQUEST['delete_image'])){
         $club_id = $_REQUEST['club_id'];
         $target_dir = "../assets/files/clubs/multi_images/$club_id";
@@ -32,7 +29,13 @@
 
 </h4>
 <form action="" method="post" enctype="multipart/form-data">
-
+    <div class="form-group">
+        <label for="type"><?php echo $obj->__('type_of_club',$_SESSION['auth']['default_lang']); ?></label>
+        <select name="type" class="form-control" required>
+            <option value="C" <?php if($club_data['type'] == 'C'){echo 'selected';} ?>><?php echo $obj->__('commercial',$_SESSION['auth']['default_lang']); ?></option>
+            <option value="G" <?php if($club_data['type'] == 'G'){echo 'selected';} ?>><?php echo $obj->__('government',$_SESSION['auth']['default_lang']); ?></option>
+        </select>    
+    </div>
     <div class="form-group">
         <label for="club"><?php echo $obj->__('club',$_SESSION['auth']['default_lang']); ?></label>
         <input type="text" name="club" class="form-control" value="<?php echo $club_data['club'] ?>">

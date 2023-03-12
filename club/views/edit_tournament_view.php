@@ -59,8 +59,12 @@
         <label for="tournament_type"><input type="radio" name="tournament_type"<?php if($tournament['type'] == 'W')echo 'checked'; ?>  value="W"><?php echo $obj->__('winner_and_knockout_system',$_SESSION['auth']['default_lang']); ?></label>
     </div>
     <div class="form-group">
+        <input type="hidden" name="free_entry" value="N">
+        <label for="free_entry"><input id="free_entry_input" type="checkbox" name="free_entry" value="Y" <?php if($tournament['free_entry'] == 'Y')echo 'checked'; ?>><?php echo $obj->__('free_entry',$_SESSION['auth']['default_lang']); ?></label>
+    </div>
+    <div class="form-group <?php if($tournament['free_entry'] == 'Y')echo 'hidden'; ?>" id="tournament_entry_fee">
         <label for="tournament_entry_fee"><?php echo $obj->__('entry_fees',$_SESSION['auth']['default_lang']); ?></label>
-        <input type="number" name="tournament_entry_fee" value="<?php echo $tournament['fee'] ?>" required class="form-control">
+        <input type="number" name="tournament_entry_fee" id="tournament_entry_fee_value" value="<?php echo $tournament['fee'] ?>" required class="form-control">
     </div>
     <div class="form-group">
         <label for="tournament_start_date"><?php echo $obj->__('tournament_start_date',$_SESSION['auth']['default_lang']); ?></label>
@@ -177,8 +181,18 @@
     <a id="add_more_sponser_yes"> <b><?php echo $obj->__('add_more_sponsors',$_SESSION['auth']['default_lang']); ?> +</b> </a><br>
     <input type="submit" value="<?php echo $obj->__('update_tournament',$_SESSION['auth']['default_lang']); ?>" name="update_tournament" class="btn btn-primary">
 </form>
-
+<style>
+    .hidden{
+        display: none;
+    }
+</style>
 <script>
+     $('#free_entry_input').click(function(){
+            $('#tournament_entry_fee').toggleClass('hidden');
+            if($(this).prop("checked") == true){
+                $('#tournament_entry_fee_value').val('0');
+            }
+        });
     $('#is_sponser_yes').click(function() {
         $('.sponsors_div input').attr("required", true);
         // $('.sponsors_div textarea').attr("required", true);

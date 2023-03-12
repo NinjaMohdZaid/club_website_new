@@ -15,13 +15,13 @@
     require('navbar.php');
     ?>
     <div class="sw-banner-data d-flex justify-content-center align-items-center">
-        <h1 class="text-light">Our News</h1>
+        <h1 class="text-light sw_main_heading">Our News</h1>
     </div>
     <div class="separator"></div>
     <div class="container my-2">
         <div class="row">
             <div class="my-5 px-5">
-                <h2 class="text-warning text-center">Our News</h2>
+                <h2 class="elemenator_heading text-center">Our News</h2>
             </div>
             <div class="row">
                 <div class="col-sm d-flex my-2" style="min-width: 27rem;max-width: 27rem;">
@@ -56,6 +56,9 @@
     </div>
     <?php
         require('footer.php');
+    ?>
+    <?php
+        require('cookie.php');
     ?>
 </body>
 

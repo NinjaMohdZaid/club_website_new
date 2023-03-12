@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 04, 2023 at 02:45 PM
+-- Generation Time: Mar 11, 2023 at 03:25 PM
 -- Server version: 8.0.31
 -- PHP Version: 7.4.32
 
@@ -171,31 +171,37 @@ CREATE TABLE `clubs` (
   `default_lang` char(2) COLLATE utf8mb4_general_ci NOT NULL DEFAULT 'en',
   `game_ids` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `licence_expiry` int NOT NULL,
-  `subscription_id` int NOT NULL DEFAULT '0'
+  `subscription_id` int NOT NULL DEFAULT '0',
+  `type` char(1) COLLATE utf8mb4_general_ci NOT NULL DEFAULT 'C'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `clubs`
 --
 
-INSERT INTO `clubs` (`club_id`, `address`, `city`, `contact_person`, `email`, `phone`, `website`, `status`, `password`, `timestamp`, `default_lang`, `game_ids`, `licence_expiry`, `subscription_id`) VALUES
-(45, '', 'Moradabad', 'Mohd Zaid', 'club12@gmail.com', '9759955376', 'http://www.comp.com', 'D', '827ccb0eea8a706c4c34a16891f84e7b', 1674374170, 'en', '16,19', 1676138700, 1),
-(47, 'This is full address', 'Moradabad', 'Mohd Zaid', 'admin@gmail.com', '7877978765', 'http://www.comp.com', 'A', '25d55ad283aa400af464c76d713c07ad', 1674912742, 'en', '', 1676743500, 1),
-(48, '', 'Moradabad', 'Mohd Zaid', 'admin33@gmail.com', '9759955376', 'http://www.comp.com', 'D', '827ccb0eea8a706c4c34a16891f84e7b', 1674991822, 'en', '', 0, 0),
-(49, '', 'Moradabad', 'Mohd Zaid', 'admindfef@gmail.com', '776767776767', 'http://www.comp.com', 'D', '827ccb0eea8a706c4c34a16891f84e7b', 1674991923, 'en', '', 0, 0),
-(50, '', 'Moradabad', 'Mohd Zaid', 'admindfef@gmail.com', '77676777676733', 'http://www.comp.com', 'D', '827ccb0eea8a706c4c34a16891f84e7b', 1674992297, 'en', '15,16,19', 0, 1),
-(51, '', 'Moradabad', 'Mohd Zaid', 'admin@gmail.com', '975995567', 'http://www.comp.com', 'D', '827ccb0eea8a706c4c34a16891f84e7b', 1675007566, 'en', '15', 0, 4),
-(52, '', 'Moradabad', 'Mohd Zaid', 'admin55555@gmail.com', '9759955376', 'http://www.comp.com', 'D', 'e10adc3949ba59abbe56e057f20f883e', 1675445913, 'ar', '42,41,40,35,36,38', 0, 1),
-(53, '', 'Moradabad', 'Mohd Zaid', '4555@gmail.com', '97599555656', 'http://www.comp.com', 'D', '827ccb0eea8a706c4c34a16891f84e7b', 1675448261, 'en', '15,21,22,23,24,25,26,27,28,29,30,31', 0, 4),
-(55, 'Moradabad,Uttar Pradesh', 'Moradabad', 'Mohd Zaid', 'adeeeeemin@gmail.com', '097554444376', 'http://www.comp.com', 'A', '81dc9bdb52d04dc20036dbd8313ed055', 1676476570, 'en', NULL, 1676503380, 0),
-(56, 'Moradabad,Uttar Pradesh', 'Moradabad', 'Mohd Zaid', 'admggggggin@gmail.com', '09759955376', 'http://www.comp.com', 'A', '81dc9bdb52d04dc20036dbd8313ed055', 1676477196, 'en', NULL, 1676464560, 5),
-(57, '', 'Moradabad', 'Mohd Zaid', 'admi6655n55555@gmail.com', '09759955376', 'http://www.comp.com', 'D', 'e10adc3949ba59abbe56e057f20f883e', 1676655859, 'en', NULL, 1677287580, 4),
-(58, 'Moradabad,Uttar Pradesh', 'Moradabad', 'Mohd Zaid', 'root55@gmail.com', '097566555555', 'http://www.comp.com', 'A', 'e10adc3949ba59abbe56e057f20f883e', 1676805986, 'en', NULL, 1676836500, 4),
-(59, 'Moradabad,Uttar Pradesh', 'Moradabad', 'Mohd Zaid', 'root@55gmail.com', '09759944444', 'http://www.comp.com', 'A', 'e10adc3949ba59abbe56e057f20f883e', 1676808534, 'en', NULL, 1676835480, 1),
-(62, 'Moradabad,Uttar Pradesh', 'Moradabad', 'Mohd Zaid', 'root333322@gmail.com', '09759433333', 'http://www.comp.com', 'A', '25d55ad283aa400af464c76d713c07ad', 1676809903, 'en', NULL, 1676836860, 1),
-(64, 'Moradabad,Uttar Pradesh', 'Moradabad', 'Mohd Zaid', 'root@ggffs.comnn', '095444335376', 'http://www.comp.com', 'A', '81c3b080dad537de7e10e0987a4bf52e', 1676812692, 'en', NULL, 1676839620, 1),
-(65, 'Moradabad,Uttar Pradesh', 'Moradabad', 'Mohd Zaid', 'ro65554@gmail.com2', '097988877655', 'http://www.comp.com', 'A', '81c3b080dad537de7e10e0987a4bf52e', 1676813251, 'en', NULL, 1676840220, 4),
-(75, 'Moradabad,Uttar Pradesh', 'Moradabad', 'Mohd Zaid', '44@gmail.com', '0954440376', 'http://www.comp.com', 'A', 'e10adc3949ba59abbe56e057f20f883e', 1676826928, 'en', NULL, 1676817840, 1);
+INSERT INTO `clubs` (`club_id`, `address`, `city`, `contact_person`, `email`, `phone`, `website`, `status`, `password`, `timestamp`, `default_lang`, `game_ids`, `licence_expiry`, `subscription_id`, `type`) VALUES
+(45, '', 'Moradabad', 'Mohd Zaid', 'club12@gmail.com', '9759955376', 'http://www.comp.com', 'D', '827ccb0eea8a706c4c34a16891f84e7b', 1674374170, 'en', '16,19', 1676138700, 1, 'G'),
+(47, 'This is full address', 'Moradabad', 'Mohd Zaid', 'admin@gmail.com', '7877978765', 'http://www.comp.com', 'A', '25d55ad283aa400af464c76d713c07ad', 1674912742, 'en', '', 1676743500, 1, 'C'),
+(48, '', 'Moradabad', 'Mohd Zaid', 'admin33@gmail.com', '9759955376', 'http://www.comp.com', 'D', '827ccb0eea8a706c4c34a16891f84e7b', 1674991822, 'en', '', 0, 0, 'C'),
+(49, '', 'Moradabad', 'Mohd Zaid', 'admindfef@gmail.com', '776767776767', 'http://www.comp.com', 'D', '827ccb0eea8a706c4c34a16891f84e7b', 1674991923, 'en', '', 0, 0, 'C'),
+(50, '', 'Moradabad', 'Mohd Zaid', 'admindfef@gmail.com', '77676777676733', 'http://www.comp.com', 'D', '827ccb0eea8a706c4c34a16891f84e7b', 1674992297, 'en', '15,16,19', 0, 1, 'C'),
+(51, '', 'Moradabad', 'Mohd Zaid', 'admin@gmail.com', '975995567', 'http://www.comp.com', 'D', '827ccb0eea8a706c4c34a16891f84e7b', 1675007566, 'en', '15', 0, 4, 'G'),
+(52, '', 'Moradabad', 'Mohd Zaid', 'admin55555@gmail.com', '9759955376', 'http://www.comp.com', 'D', 'e10adc3949ba59abbe56e057f20f883e', 1675445913, 'en', '42,41,40,35,36,38', 0, 1, 'G'),
+(53, '', 'Moradabad', 'Mohd Zaid', '4555@gmail.com', '97599555656', 'http://www.comp.com', 'D', '827ccb0eea8a706c4c34a16891f84e7b', 1675448261, 'en', '15,21,22,23,24,25,26,27,28,29,30,31', 0, 4, 'C'),
+(55, 'Moradabad,Uttar Pradesh', 'Moradabad', 'Mohd Zaid', 'adeeeeemin@gmail.com', '097554444376', 'http://www.comp.com', 'A', '81dc9bdb52d04dc20036dbd8313ed055', 1676476570, 'en', NULL, 1676503380, 0, 'C'),
+(56, 'Moradabad,Uttar Pradesh', 'Moradabad', 'Mohd Zaid', 'admggggggin@gmail.com', '09759955376', 'http://www.comp.com', 'A', '81dc9bdb52d04dc20036dbd8313ed055', 1676477196, 'en', NULL, 1676464560, 5, 'C'),
+(57, '', 'Moradabad', 'Mohd Zaid', 'admi6655n55555@gmail.com', '09759955376', 'http://www.comp.com', 'A', 'e10adc3949ba59abbe56e057f20f883e', 1676655859, 'en', NULL, 1677287580, 4, 'C'),
+(58, 'Moradabad,Uttar Pradesh', 'Moradabad', 'Mohd Zaid', 'root55@gmail.com', '097566555555', 'http://www.comp.com', 'A', 'e10adc3949ba59abbe56e057f20f883e', 1676805986, 'en', NULL, 1676836500, 4, 'C'),
+(59, 'Moradabad,Uttar Pradesh', 'Moradabad', 'Mohd Zaid', 'root@55gmail.com', '09759944444', 'http://www.comp.com', 'A', 'e10adc3949ba59abbe56e057f20f883e', 1676808534, 'en', NULL, 1676835480, 1, 'C'),
+(62, 'Moradabad,Uttar Pradesh', 'Moradabad', 'Mohd Zaid', 'root333322@gmail.com', '09759433333', 'http://www.comp.com', 'A', '25d55ad283aa400af464c76d713c07ad', 1676809903, 'en', NULL, 1676836860, 1, 'C'),
+(64, 'Moradabad,Uttar Pradesh', 'Moradabad', 'Mohd Zaid', 'root@ggffs.comnn', '095444335376', 'http://www.comp.com', 'A', '81c3b080dad537de7e10e0987a4bf52e', 1676812692, 'en', NULL, 1676839620, 1, 'C'),
+(65, 'Moradabad,Uttar Pradesh', 'Moradabad', 'Mohd Zaid', 'ro65554@gmail.com2', '097988877655', 'http://www.comp.com', 'A', '81c3b080dad537de7e10e0987a4bf52e', 1676813251, 'en', NULL, 1676840220, 4, 'C'),
+(75, 'Moradabad,Uttar Pradesh', 'Moradabad', 'Mohd Zaid', '44@gmail.com', '0954440376', 'http://www.comp.com', 'A', 'e10adc3949ba59abbe56e057f20f883e', 1676826928, 'en', NULL, 1676817840, 1, 'C'),
+(76, 'Moradabad,Uttar Pradesh', 'Moradabad', 'Mohd Zaid', 'rootssss@55gmail.com', '09759955376', 'http://www.comp.com', 'A', '81c3b080dad537de7e10e0987a4bf52e', 1678522161, 'en', NULL, 1678549080, 4, 'C'),
+(77, 'Moradabad,Uttar Pradesh', 'Moradabad', 'Mohd Zaid', 'root$@gggmm.com', '09759955376', 'http://www.comp.com', 'A', '81c3b080dad537de7e10e0987a4bf52e', 1678524707, 'en', NULL, 1678548060, 1, 'C'),
+(78, 'Moradabad,Uttar Pradesh', 'Moradabad', 'Mohd Zaid', 'root$@gggmm.com', '09759955376', 'http://www.comp.com', 'A', '81c3b080dad537de7e10e0987a4bf52e', 1678524814, 'en', NULL, 1678548060, 1, 'G'),
+(79, '', 'testhhh', 'Mohd Zaid', 'testemailllll@gmail.com', '096555555444', 'http://www.comp.com', 'D', '9b569f88da56bc5530c11dca4ea52c58', 1678525561, 'en', NULL, 1678552500, 4, 'G'),
+(80, '', 'Moradabad', 'Mohd Zaid', 'tettrrrrlllll@gmail.com', '0665555376', 'http://www.comp.com', 'D', '9b569f88da56bc5530c11dca4ea52c58', 1678525702, 'en', NULL, 1678459080, 5, 'G');
 
 -- --------------------------------------------------------
 
@@ -265,7 +271,18 @@ INSERT INTO `club_descriptions` (`club_id`, `club`, `activities_desc`, `history`
 (65, 'Dubai Snooker Club', 'ddd', 'ggg', 'ar'),
 (65, 'Dubai Snooker Club', 'ddd', 'ggg', 'en'),
 (75, 'Test Club', 'sss', 'sss', 'ar'),
-(75, 'Test Club', 'sss', 'sss', 'en');
+(75, 'Test Club', 'sss', 'sss', 'en'),
+(76, 'Dubai Snooker Club', 'sss', 'ss', 'ar'),
+(76, 'Dubai Snooker Club', 'sss', 'ss', 'en'),
+(77, 'Test gov', 'sggs', 'ttts', ''),
+(77, 'Test gov', 'sggs', 'ttts', 'ar'),
+(77, 'Test gov', 'sggs', 'ttts', 'en'),
+(78, 'Test gov', 'sggs', 'ttts', 'ar'),
+(78, 'Test gov', 'sggs', 'ttts', 'en'),
+(79, 'test gv register', '', '', 'ar'),
+(79, 'test gv register', '', '', 'en'),
+(80, 'etts', '', '', 'ar'),
+(80, 'etts', '', '', 'en');
 
 -- --------------------------------------------------------
 
@@ -729,32 +746,33 @@ CREATE TABLE `products` (
   `price` decimal(10,2) NOT NULL,
   `category_id` int NOT NULL,
   `status` char(1) COLLATE utf8mb4_general_ci DEFAULT 'A',
-  `club_id` int NOT NULL DEFAULT '0'
+  `club_id` int NOT NULL DEFAULT '0',
+  `timestamp` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`product_id`, `amount`, `price`, `category_id`, `status`, `club_id`) VALUES
-(4, 10, '49.00', 2, 'A', 0),
-(5, 10, '49.00', 1, 'A', 0),
-(7, 10, '49.00', 2, 'A', 52),
-(8, 10, '49.00', 2, 'A', 52),
-(9, 10, '49.00', 2, 'A', 0),
-(10, 10, '345.40', 1, 'A', 0),
-(11, 10, '56.00', 2, 'A', 0),
-(12, 10, '56.00', 2, 'A', 0),
-(13, 27, '49.00', 1, 'A', 0),
-(14, 13, '49.00', 2, 'A', 0),
-(15, 10, '49.00', 1, 'A', 57),
-(16, 10, '49.00', 2, 'A', 0),
-(17, 10, '49.00', 1, 'A', 0),
-(18, 37, '49.03', 1, 'A', 0),
-(21, 10, '49.00', 1, 'A', 0),
-(22, 2, '0.01', 1, 'A', 52),
-(23, 14, '49.00', 1, 'A', 52),
-(24, 10, '49.00', 1, 'A', 52);
+INSERT INTO `products` (`product_id`, `amount`, `price`, `category_id`, `status`, `club_id`, `timestamp`) VALUES
+(4, 10, '49.00', 2, 'A', 0, 0),
+(5, 10, '49.00', 1, 'A', 0, 0),
+(7, 10, '49.00', 2, 'A', 52, 0),
+(8, 10, '49.00', 2, 'A', 52, 0),
+(9, 10, '49.00', 2, 'A', 0, 0),
+(10, 10, '345.40', 1, 'A', 0, 0),
+(11, 10, '56.00', 2, 'A', 0, 0),
+(12, 10, '56.00', 2, 'A', 0, 0),
+(13, 27, '49.00', 1, 'A', 0, 0),
+(14, 13, '49.00', 2, 'A', 0, 0),
+(15, 10, '49.00', 1, 'A', 57, 0),
+(16, 10, '49.00', 2, 'A', 0, 0),
+(17, 10, '49.00', 1, 'A', 0, 0),
+(18, 37, '49.03', 1, 'A', 0, 0),
+(21, 10, '49.00', 1, 'A', 0, 0),
+(22, 2, '0.01', 1, 'A', 52, 0),
+(23, 14, '49.00', 1, 'A', 52, 0),
+(24, 10, '49.00', 1, 'A', 52, 0);
 
 -- --------------------------------------------------------
 
@@ -944,11 +962,11 @@ CREATE TABLE `subscription_descriptions` (
 
 INSERT INTO `subscription_descriptions` (`subscription_id`, `subscription`, `description`, `lang_code`) VALUES
 (1, 'Gold', 'yrtyftf', 'ar'),
-(1, 'Golded', 'yrtyftfdg', 'en'),
+(1, 'Golded', 'Design, photograph, download and publish products The club has 21 - 40 products.\r\nIn the event of content modification and image change 35 dirhams for each amendment', 'en'),
 (4, 'Silver', 'hfy', 'ar'),
-(4, 'Silver', 'hfy', 'en'),
+(4, 'Silver', 'Design, photograph, download and publish products The club has 21 - 40 products.\r\nIn the event of content modification and image change 35 dirhams for each amendment', 'en'),
 (5, 'Goldedtttt', 'ggg', 'ar'),
-(5, 'Goldedtttt', 'ggg', 'en');
+(5, 'Golded Endee', 'Design, photograph, download and publish products The club has 20 products.\r\nIn the event of content modification and image change 50 dirhams for each amendment', 'en');
 
 -- --------------------------------------------------------
 
@@ -966,6 +984,7 @@ CREATE TABLE `tournaments` (
   `fee` decimal(10,2) NOT NULL,
   `is_sponser` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT 'N',
   `club_id` int NOT NULL DEFAULT '0',
+  `free_entry` char(1) COLLATE utf8mb4_general_ci NOT NULL DEFAULT 'N',
   `timestamp` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -973,24 +992,25 @@ CREATE TABLE `tournaments` (
 -- Dumping data for table `tournaments`
 --
 
-INSERT INTO `tournaments` (`t_id`, `type`, `tournament_start_date`, `reg_start_date`, `reg_end_date`, `status`, `fee`, `is_sponser`, `club_id`, `timestamp`) VALUES
-(3, 'W', 0, 1676140320, 1676140320, 'A', '101.00', 'Y', 0, 0),
-(4, 'K', 0, 1676221500, 1676221500, 'A', '123.00', 'Y', 0, 0),
-(5, 'K', 0, 1676235960, 1676235960, 'A', '3.00', 'Y', 0, 0),
-(6, 'K', 0, 1676235960, 1676235960, 'A', '3.00', 'Y', 0, 0),
-(7, 'K', 0, 1676235960, 1676235960, 'A', '3.00', 'Y', 0, 0),
-(8, 'K', 0, 1676235960, 1676235960, 'A', '3.00', 'Y', 0, 0),
-(9, 'L', 0, 1676200860, 1676200860, 'A', '11111.00', 'Y', 0, 0),
-(10, 'K', 0, 1676202960, 1676202960, 'A', '111.00', 'Y', 0, 0),
-(11, 'L', 1676640780, 1676637180, 1676644380, 'A', '2.00', 'N', 0, 0),
-(12, 'L', 1676731800, 1677329400, 1676735400, 'A', '0.24', 'N', 0, 0),
-(13, 'L', 1676728260, 1676731860, 1675515120, 'A', '0.17', 'Y', 0, 0),
-(15, 'L', 1676734200, 1676734200, 1676737800, 'A', '0.03', 'N', 52, 0),
-(18, 'K', 1676728980, 1676739720, 1677348120, 'D', '8.06', 'N', 52, 0),
-(19, 'L', 1676738520, 1676742120, 1677336120, 'A', '0.15', 'N', 52, 0),
-(20, 'L', 1676738640, 1676817840, 1676742240, 'A', '0.07', 'N', 52, 0),
-(21, 'L', 1676742300, 1676990760, 1676558760, 'A', '0.08', 'N', 52, 0),
-(22, 'L', 1676746920, 1676746920, 1676746920, 'A', '0.15', 'Y', 52, 0);
+INSERT INTO `tournaments` (`t_id`, `type`, `tournament_start_date`, `reg_start_date`, `reg_end_date`, `status`, `fee`, `is_sponser`, `club_id`, `free_entry`, `timestamp`) VALUES
+(3, 'W', 0, 1676140320, 1676140320, 'A', '101.00', 'Y', 0, 'N', 0),
+(4, 'K', 0, 1676221500, 1676221500, 'A', '123.00', 'Y', 0, 'N', 0),
+(5, 'K', 0, 1676235960, 1676235960, 'A', '3.00', 'Y', 0, 'N', 0),
+(6, 'K', 0, 1676235960, 1676235960, 'A', '3.00', 'Y', 0, 'N', 0),
+(7, 'K', 0, 1676235960, 1676235960, 'A', '3.00', 'Y', 0, 'N', 0),
+(8, 'K', 0, 1676235960, 1676235960, 'A', '3.00', 'Y', 0, 'N', 0),
+(9, 'L', 0, 1676200860, 1676200860, 'A', '11111.00', 'Y', 0, 'N', 0),
+(10, 'K', 0, 1676202960, 1676202960, 'A', '111.00', 'Y', 0, 'N', 0),
+(11, 'L', 1676640780, 1676637180, 1676644380, 'A', '2.00', 'N', 0, 'N', 0),
+(12, 'L', 1676731800, 1677329400, 1676735400, 'A', '0.24', 'N', 0, 'N', 0),
+(13, 'L', 1676728260, 1676731860, 1675515120, 'A', '0.17', 'Y', 0, 'N', 0),
+(15, 'L', 1676734200, 1676734200, 1676737800, 'A', '0.03', 'N', 52, 'N', 0),
+(18, 'K', 1676728980, 1676739720, 1677348120, 'D', '8.06', 'N', 52, 'N', 0),
+(19, 'L', 1676738520, 1676742120, 1677336120, 'A', '0.15', 'N', 52, 'N', 0),
+(20, 'L', 1676738640, 1676817840, 1676742240, 'A', '0.07', 'N', 52, 'N', 0),
+(21, 'L', 1676742300, 1676990760, 1676558760, 'A', '0.08', 'N', 52, 'N', 0),
+(22, 'L', 1676746920, 1676746920, 1676746920, 'A', '0.15', 'Y', 52, 'N', 0),
+(23, 'L', 1678550580, 1678550580, 1678557780, 'A', '0.00', 'N', 52, 'Y', 1678520000);
 
 -- --------------------------------------------------------
 
@@ -1047,7 +1067,9 @@ INSERT INTO `tournaments_descriptions` (`t_id`, `tournament`, `description`, `hi
 (21, 'sadhhh', 'ddd', 'dd', 'ar'),
 (21, 'sadhhh', 'ddd', 'dd', 'en'),
 (22, 'sadhhh', 'd', 'dd', 'ar'),
-(22, 'sadhhh', 'd', 'dd', 'en');
+(22, 'sadhhh', 'd', 'dd', 'en'),
+(23, 'test', 'sss', 'sss', 'ar'),
+(23, 'test', 'test', 'test', 'en');
 
 -- --------------------------------------------------------
 
@@ -1437,7 +1459,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `clubs`
 --
 ALTER TABLE `clubs`
-  MODIFY `club_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
+  MODIFY `club_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
 
 --
 -- AUTO_INCREMENT for table `cupon`
@@ -1539,7 +1561,7 @@ ALTER TABLE `subscriptions`
 -- AUTO_INCREMENT for table `tournaments`
 --
 ALTER TABLE `tournaments`
-  MODIFY `t_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `t_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `translations`

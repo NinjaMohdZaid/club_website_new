@@ -18,7 +18,7 @@
     <div class="container my-2">
         <div class="row mx-auto">
             <div class="col-sm-6 px-5 py-5">
-                <h1 class="text-warning">WELCOME TO CLLLLB</h1>
+                <h1 class="elemenator_heading">WELCOME TO CLLLLB</h1>
                 <p>The Club Foundation welcomes you to the first sports platform for various hobbles and sports, through its unified electronic system that brings together all sports clubs in one place to server amateurs and professionals.</p>
                 <a href="frontend_config/aboutus.php" class="btn btn-outline-dark">Read More</a>
             </div>
@@ -29,6 +29,9 @@
     </div>
     <?php
         require('frontend_config/footer.php');
+    ?>
+    <?php
+        require('frontend_config/cookie.php');
     ?>
 </body>
 </html>

@@ -5,12 +5,10 @@
     if(isset($_POST['update_club'])){
         $up_msg = $obj->update_club($_POST,$_SESSION['default_lang']);
     }
-    if(isset($_GET['action'])){
-        if($_GET['action']=='edit'){
-            $club_id = $_GET['club_id'];
-            $club_data = $obj->display_clubByID($club_id,$_SESSION['default_lang']);
-        }
-    }
+    
+    $club_id = $_GET['club_id'];
+    $club_data = $obj->display_clubByID($club_id,$_SESSION['default_lang']);
+      
     if(!empty($_REQUEST['delete_image'])){
         $club_id = $_REQUEST['club_id'];
         $target_dir = "../assets/files/clubs/multi_images/$club_id";
@@ -34,6 +32,13 @@
     
     <input type="hidden" name="club_id" class="form-control" value="<?php echo $club_data['club_id'] ?>">
 
+    <div class="form-group">
+        <label for="type"><?php echo $obj->__('type_of_club',$_SESSION['default_lang']); ?></label>
+        <select name="type" class="form-control" required>
+            <option value="C" <?php if($club_data['type'] == 'C'){echo 'selected';} ?>><?php echo $obj->__('commercial',$_SESSION['default_lang']); ?></option>
+            <option value="G" <?php if($club_data['type'] == 'G'){echo 'selected';} ?>><?php echo $obj->__('government',$_SESSION['default_lang']); ?></option>
+        </select>    
+    </div>
     <div class="form-group">
         <label for="club"><?php echo $obj->__('club',$_SESSION['default_lang']); ?></label>
         <input type="text" name="club" class="form-control" value="<?php echo $club_data['club'] ?>">

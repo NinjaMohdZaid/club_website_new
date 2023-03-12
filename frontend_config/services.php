@@ -21,13 +21,13 @@
     require('navbar.php');
     ?>
     <div class="sw-banner-data d-flex justify-content-center align-items-center">
-        <h1 class="text-light">Services</h1>
+        <h1 class="text-light sw_main_heading">Services</h1>
     </div>
     <div class="separator"></div>
     <div class="container my-2">
         <div class="row mx-auto">
             <div class="col-sm-6 px-5">
-                <h1 class="text-warning">About the Application</h1>
+                <h2 class="elemenator_heading">About the Application</h2>
                 <p>Cllllb has designed a specialized electronic system for sports center of all kinds for the purpose of managing its sports products and services through a comprehensive, easy-to-use sports platform that their customers can access in one place.</p>
 
                 <ul>
@@ -44,7 +44,7 @@
         </div>
         <div class="row">
             <div class="my-5 px-5">
-                <h2 class="text-warning text-center">CLLLLB MONTHLY SUBSCRIPTION PACKAGES</h2>
+                <h2 class="elemenator_heading text-center">CLLLLB MONTHLY SUBSCRIPTION PACKAGES</h2>
             </div>
             <div class="row">
                 <?php if (!empty($subscriptions)) {
@@ -53,9 +53,9 @@
                     <div class="col-sm d-flex my-2" style="min-width: 27rem;max-width: 27rem;">
                         <div class="card card-body flex-fill">
                             <h4 class="text-center"><?php echo $subscription['subscription']; ?></h4>
-                            <h1 class="text-warning text-center"><?php echo $subscription['price'] .' AED For '.$subscription['validity_months']; ?> Months</h1>
+                            <h1 class="elemenator_heading text-center"><?php echo $subscription['price'] .' AED For '.$subscription['validity_months']; ?> Months</h1>
                             <p><?php echo $subscription['description']; ?></p>
-                            <a href="../club/register_club.php" class="btn btn-warning">Subscribe Now</a>
+                            <a href="../club/register_club.php" class="btn btn-sw">Subscribe Now</a>
                         </div>
                     </div>
                 <?php 
@@ -68,6 +68,9 @@
     </div>
     <?php
         require('footer.php');
+    ?>
+    <?php
+        require('cookie.php');
     ?>
 </body>
 

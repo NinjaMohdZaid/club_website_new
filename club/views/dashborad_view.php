@@ -1,4 +1,6 @@
 <?php 
+    date_default_timezone_set("Asia/Dubai");
+    $_REQUEST['club_id'] = $_SESSION['auth']['club_id'];
     $dashboard_data = $obj->get_dashboard_data($_REQUEST);
 
 ?>
@@ -46,6 +48,16 @@
 </div>
 
 <div class="col-md-6 col-xl-3">
+    <div class="card bg-c-green order-card">
+        <div class="card-block">
+            <h6 class="m-b-20"><?php echo $obj->__('products',$_SESSION['auth']['default_lang']); ?></h6>
+            <h2 class="text-right"><i class="ti-wallet f-left"></i><span id="products"><?php echo $dashboard_data['total_products'] ?></span></h2>
+            <p class="m-b-0"><span class="f-right"></span></p>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-6 col-xl-3">
     <div class="card bg-c-pink order-card">
         <div class="card-block">
             <h6 class="m-b-20"><?php echo $obj->__('tournaments',$_SESSION['auth']['default_lang']); ?></h6>
@@ -58,18 +70,8 @@
 <div class="col-md-6 col-xl-3">
     <div class="card bg-c-green order-card">
         <div class="card-block">
-            <h6 class="m-b-20"><?php echo $obj->__('members',$_SESSION['auth']['default_lang']); ?></h6>
-            <h2 class="text-right"><i class="ti-tag f-left"></i><span id="totalMembers">2000</span></h2>
-            <p class="m-b-0"><span class="f-right"></span></p>
-        </div>
-    </div>
-</div>
-
-<div class="col-md-6 col-xl-3">
-    <div class="card bg-c-pink order-card">
-        <div class="card-block">
-            <h6 class="m-b-20"><?php echo $obj->__('bookings',$_SESSION['auth']['default_lang']); ?></h6>
-            <h2 class="text-right"><i class="ti-wallet f-left"></i><span id="totalBookings"><?php echo $dashboard_data['total_bookings'] ?></span></h2>
+            <h6 class="m-b-20"><?php echo $obj->__('jobs',$_SESSION['auth']['default_lang']); ?></h6>
+            <h2 class="text-right"><i class="ti-wallet f-left"></i><span id="total_jobs"><?php echo $dashboard_data['total_jobs'] ?></span></h2>
             <p class="m-b-0"><span class="f-right"></span></p>
         </div>
     </div>
@@ -78,14 +80,12 @@
 <div class="col-md-6 col-xl-3">
     <div class="card bg-c-yellow order-card">
         <div class="card-block">
-            <h6 class="m-b-20"><?php echo $obj->__('points',$_SESSION['auth']['default_lang']); ?></h6>
-            <h2 class="text-right"><i class="ti-reload f-left"></i><span id="totalPoints">30000</span></h2>
+            <h6 class="m-b-20"><?php echo $obj->__('bookings',$_SESSION['auth']['default_lang']); ?></h6>
+            <h2 class="text-right"><i class="ti-wallet f-left"></i><span id="totalBookings"><?php echo $dashboard_data['total_bookings'] ?></span></h2>
             <p class="m-b-0"><span class="f-right"></span></p>
         </div>
     </div>
 </div>
-
-
 <!-- order-card end -->
 
 

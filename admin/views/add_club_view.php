@@ -19,7 +19,13 @@
 </h4>
 <form action="" method="post" enctype="multipart/form-data">
 
-
+    <div class="form-group">
+        <label for="type"><?php echo $obj->__('type_of_club',$_SESSION['default_lang']); ?></label>
+        <select name="type" class="form-control" required>
+            <option value="C"><?php echo $obj->__('commercial',$_SESSION['default_lang']); ?></option>
+            <option value="G"><?php echo $obj->__('government',$_SESSION['default_lang']); ?></option>
+        </select>    
+    </div>
     <div class="form-group">
         <label for="club"><?php echo $obj->__('club',$_SESSION['default_lang']); ?></label>
         <input type="text" name="club" class="form-control">

@@ -19,6 +19,7 @@ if(isset($_POST['register_club'])){
         $club_data = $obj->display_clubByID($club_id);
         $_SESSION['auth']['club_id'] = $club_id;
         $_SESSION['auth']['email'] = $club_data['email'];
+        $_SESSION['auth']['club_type'] = $club_data['type'];
         $_SESSION['auth']['default_lang'] = $club_data['default_lang'];        
         if(!empty($_SESSION['auth']['club_id'])){
             header("location:payment_page.php");
@@ -55,6 +56,13 @@ if(isset($_POST['register_club'])){
                                 </div>
                                 <hr/>
                                 <div class="d-flex">
+                                    <div class="input-group mr-2">
+                                        <select name="type" class="form-control" required>
+                                            <option value=""><?php echo $obj->__('type_of_club',$_SESSION['default_lang']); ?></option>
+                                            <option value="C"><?php echo $obj->__('commercial',$_SESSION['default_lang']); ?></option>
+                                            <option value="G"><?php echo $obj->__('government',$_SESSION['default_lang']); ?></option>
+                                        </select>    
+                                    </div>
                                     <div class="input-group mr-2">
                                         <input type="text" class="form-control" placeholder="Club Name" name="club" autocomplete="false">
                                         <span class="md-line"></span>

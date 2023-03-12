@@ -45,13 +45,29 @@
         </div>
     </div>
 </div>
-
-
+<div class="col-md-6 col-xl-3">
+    <div class="card bg-c-yellow order-card">
+        <div class="card-block">
+            <h6 class="m-b-20"><?php echo $obj->__('games',$_SESSION['default_lang']); ?></h6>
+            <h2 class="text-right"><i class="ti-shopping-cart f-left"></i><span id="games"><?php echo $dashboard_data['total_games'] ?></span></h2>
+            <p class="m-b-0"><span class="f-right"></span></p>
+        </div>
+    </div>
+</div>
+<div class="col-md-6 col-xl-3">
+    <div class="card bg-c-blue order-card">
+        <div class="card-block">
+            <h6 class="m-b-20"><?php echo $obj->__('special_offers',$_SESSION['default_lang']); ?></h6>
+            <h2 class="text-right"><i class="ti-wallet f-left"></i><span id="special_offers"><?php echo $dashboard_data['total_special_offers'] ?></span></h2>
+            <p class="m-b-0"><span class="f-right"></span></p>
+        </div>
+    </div>
+</div>
 <div class="col-md-6 col-xl-3">
     <div class="card bg-c-green order-card">
         <div class="card-block">
-            <h6 class="m-b-20"><?php echo $obj->__('members',$_SESSION['default_lang']); ?></h6>
-            <h2 class="text-right"><i class="ti-tag f-left"></i><span id="totalMembers">2000</span></h2>
+            <h6 class="m-b-20"><?php echo $obj->__('products',$_SESSION['default_lang']); ?></h6>
+            <h2 class="text-right"><i class="ti-wallet f-left"></i><span id="products"><?php echo $dashboard_data['total_products'] ?></span></h2>
             <p class="m-b-0"><span class="f-right"></span></p>
         </div>
     </div>
@@ -66,7 +82,7 @@
     </div>
 </div>
 <div class="col-md-6 col-xl-3">
-    <div class="card bg-c-yellow order-card">
+    <div class="card bg-c-green order-card">
         <div class="card-block">
             <h6 class="m-b-20"><?php echo $obj->__('clubs',$_SESSION['default_lang']); ?></h6>
             <h2 class="text-right"><i class="ti-reload f-left"></i><span id="totalClubs"><?php echo $dashboard_data['total_clubs'] ?></span></h2>
@@ -74,26 +90,6 @@
         </div>
     </div>
 </div>
-
-
-<div class="col-md-6 col-xl-3">
-    <div class="card bg-c-yellow order-card">
-        <div class="card-block">
-            <h6 class="m-b-20"><?php echo $obj->__('points',$_SESSION['default_lang']); ?></h6>
-            <h2 class="text-right"><i class="ti-reload f-left"></i><span id="totalPoints">30000</span></h2>
-            <p class="m-b-0"><span class="f-right"></span></p>
-        </div>
-    </div>
-</div>
-
-
-<!-- order-card end -->
-
-
-<!-- users visite and profile start -->
-
-<!-- users visite and profile end -->
-
 </div>
 </div>
 

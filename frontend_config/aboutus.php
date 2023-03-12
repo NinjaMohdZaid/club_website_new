@@ -21,22 +21,22 @@
     require('navbar.php');
     ?>
     <div class="sw-banner-data d-flex justify-content-center align-items-center">
-        <h1 class="text-light">About Us</h1>
+        <h1 class="text-light sw_main_heading">About Us</h1>
     </div>
     <div class="separator"></div>
     <div class="container my-2">
         <div class="row mx-auto">
             <div class="col-sm-6 px-5">
-                <h1 class="text-warning">About Cllllb :</h1>
+                <h2 class="elemenator_heading">About Cllllb :</h2>
                 <p>An electronic program specialized in the sports field that helps private facilities Managing the buying and selling services and communicating with their
                     customers through the Clubs . program In an advanced way by giving shopping points and savings offers – This program has many features and services that help the sports client to communicate electronically with own club, to get its
                     services in the least possible time and effort and with great benefit in terms of savings and offers the value, which all concerned parties will benefit from this smart system, As the program links all concerned parties electronically in one place that serves all parties and makes it easy for them Dealing and access to all services available through the smart application</p>
-                <h1 class="text-warning">The Strategy :</h1>
-                <h4 class="text-warning">- Vision :</h4>
+                <h2 class="elemenator_heading">The Strategy :</h2>
+                <h2 class="size_default_elemenator_heading">- Vision :</h2>
                 <p>Cllllb to be the first in the world in the field of electronic sports dealing</p>
-                <h4 class="text-warning">- The Message :</h4>
+                <h2 class="size_default_elemenator_heading">- The Message :</h2>
                 <p>To provide a fun, fair, stimulating and innovative environment in the sports field</p>
-                <h4 class="text-warning">- Value :</h4>
+                <h2 class="size_default_elemenator_heading">- Value :</h2>
                 <ul>
                     <li>Justice and equality in booking roles</li>
                     <li>honest competition</li>
@@ -44,7 +44,7 @@
                     <li>loyalty</li>
                     <li>Preserving and documenting sports memories</li>
                 </ul>
-                <h1 class="text-warning">The Goals of The Company :</h1>
+                <h2 class="elemenator_heading">The Goals of The Company :</h2>
                 <ul>
                     <li>Providing an easy, simple and stimulating electronic environment for players</li>
                     <li>Building an environment for the challenge and competition between players.</li>
@@ -54,7 +54,7 @@
                     <li>Attracting major companies, sponsors and investors to support the sports field in all its stages</li>
                     <li>Providing sports subscriptions and offers for members</li>
                 </ul>
-                <h1 class="text-warning">Social Responsibilities :</h1>
+                <h2 class="elemenator_heading">Social Responsibilities :</h2>
                 <ul>
                     <li>That the innovative Cllllb system be a system that helps to attract athletes, hobbyists, professionals and new people to reach out and make their lives healthier</li>
                     <li>Cllllb to be supportive of the sports field with its various activities, through Organizing annual local and international tournaments to encourage players to continue to develop their skills and highlight them on the sports scene</li>
@@ -64,6 +64,9 @@
     </div>
     <?php
         require('footer.php');
+    ?>
+    <?php
+        require('cookie.php');
     ?>
 </body>
 
