@@ -3,12 +3,12 @@
     if(isset($_GET['action'])){
         if($_GET['action']=='edit'){
             $subscription_id = $_GET['subscription_id'];
-            $subscription_data = $obj->display_subscriptionByID($subscription_id,$_SESSION['default_lang']);
+            $subscription_data = $obj->display_subscriptionByID($subscription_id,$_SESSION['auth']['default_lang']);
         }
     }
 
     if(isset($_POST['update_subscription'])){
-        $up_msg = $obj->update_subscription($_POST,$_SESSION['default_lang']);
+        $up_msg = $obj->update_subscription($_POST,$_SESSION['auth']['default_lang']);
     }
 ?>
 

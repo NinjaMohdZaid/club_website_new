@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 11, 2023 at 03:25 PM
+-- Generation Time: Mar 12, 2023 at 11:18 AM
 -- Server version: 8.0.31
 -- PHP Version: 7.4.32
 
@@ -102,7 +102,8 @@ INSERT INTO `bookings` (`booking_id`, `name`, `email`, `phone`, `game_id`, `club
 (13, 'Mohd Zaid', 'admin@gmail.com', '09759955376', 36, 52, '417.94', 1676311980, 1677359460, 1676292105, 1, 'G'),
 (14, 'Mohd Zaid', 'admin@gmail.com', '09759955376', 40, 52, '0.00', 1676312700, 1676668980, 1676292801, 2, 'P'),
 (15, 'Mohd Zaid', 'admin@gmail.com', '09759955376', 40, 52, '3517.20', 1676312700, 1676571900, 1676292878, 2, 'P'),
-(16, 'Mohd Zaid', 'admin@gmail.com', '09759955376', 42, 52, '3.39', 1675284780, 1680382380, 1676301837, 1, 'M');
+(16, 'Mohd Zaid', 'admin@gmail.com', '09759955376', 42, 52, '3.39', 1675284780, 1680382380, 1676301837, 1, 'M'),
+(17, 'Mohd Zaid', 'admin@gmail.com', '09759955376', 38, 52, '0.00', 1678710360, 1678883160, 1678604296, 12, 'T');
 
 -- --------------------------------------------------------
 
@@ -340,6 +341,31 @@ CREATE TABLE `customer_feedback` (
 INSERT INTO `customer_feedback` (`id`, `user_id`, `user_name`, `pdt_id`, `comment`, `comment_date`) VALUES
 (1, 1, 'saiful', 4, 'This product is very good', '2021-09-11'),
 (4, 5, 'karim', 6, 'Good product', '2021-09-15');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `expenses`
+--
+
+CREATE TABLE `expenses` (
+  `expense_id` int NOT NULL,
+  `name` varchar(155) COLLATE utf8mb4_general_ci NOT NULL,
+  `description` text COLLATE utf8mb4_general_ci NOT NULL,
+  `supplier_id` int NOT NULL,
+  `timestamp` int NOT NULL,
+  `club_id` int NOT NULL,
+  `amount` decimal(10,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `expenses`
+--
+
+INSERT INTO `expenses` (`expense_id`, `name`, `description`, `supplier_id`, `timestamp`, `club_id`, `amount`) VALUES
+(1, 'tests', 'descss', 2, 1678924800, 52, '22.00'),
+(2, 'Mohd Zaid', 'ss', 1, 1678838400, 52, '10.00'),
+(4, 'test', 'hhs', 1, 1678579200, 52, '10.00');
 
 -- --------------------------------------------------------
 
@@ -732,7 +758,18 @@ INSERT INTO `orders` (`order_id`, `user_data`, `products_data`, `shipping_addres
 (4, 'a:2:{s:4:\"name\";s:9:\"Mohd Zaid\";s:5:\"phone\";s:11:\"09759955376\";}', 'a:3:{i:1;a:2:{s:10:\"product_id\";s:1:\"2\";s:5:\"price\";s:5:\"49.00\";}i:2;a:2:{s:10:\"product_id\";s:1:\"4\";s:5:\"price\";s:5:\"49.00\";}i:3;a:2:{s:10:\"product_id\";s:1:\"5\";s:5:\"price\";s:5:\"49.00\";}}', 'Moradabad,Uttar Pradesh', 0, 'D', '147.00', 1674123385),
 (6, 'a:2:{s:4:\"name\";s:9:\"Mohd Zaid\";s:5:\"phone\";s:11:\"09759955376\";}', 'a:3:{i:1;a:2:{s:10:\"product_id\";s:1:\"2\";s:5:\"price\";s:5:\"49.00\";}i:2;a:2:{s:10:\"product_id\";s:1:\"2\";s:5:\"price\";s:5:\"49.00\";}i:3;a:2:{s:10:\"product_id\";s:1:\"2\";s:5:\"price\";s:5:\"49.00\";}}', 'Moradabad,Uttar Pradesh', 52, 'D', '147.00', 1676270447),
 (7, 'a:2:{s:4:\"name\";s:9:\"Mohd Zaid\";s:5:\"phone\";s:11:\"09759955376\";}', 'a:1:{i:1;a:2:{s:10:\"product_id\";s:1:\"4\";s:5:\"price\";s:5:\"49.00\";}}', 'Moradabad,Uttar Pradesh', 0, 'D', '49.00', 1676728662),
-(8, 'a:2:{s:4:\"name\";s:9:\"Mohd Zaid\";s:5:\"phone\";s:11:\"09759955376\";}', 'a:1:{i:1;a:2:{s:10:\"product_id\";s:1:\"5\";s:5:\"price\";s:5:\"49.00\";}}', 'Moradabad,Uttar Pradesh', 0, 'D', '49.00', 1676801448);
+(8, 'a:2:{s:4:\"name\";s:9:\"Mohd Zaid\";s:5:\"phone\";s:11:\"09759955376\";}', 'a:1:{i:1;a:2:{s:10:\"product_id\";s:1:\"5\";s:5:\"price\";s:5:\"49.00\";}}', 'Moradabad,Uttar Pradesh', 0, 'D', '49.00', 1676801448),
+(9, 'a:2:{s:4:\"name\";s:9:\"Mohd Zaid\";s:5:\"phone\";s:11:\"09759955376\";}', 'a:3:{i:1;a:2:{s:10:\"product_id\";s:1:\"7\";s:5:\"price\";s:5:\"49.00\";}i:2;a:2:{s:10:\"product_id\";s:2:\"22\";s:5:\"price\";s:4:\"0.01\";}i:3;a:2:{s:10:\"product_id\";s:2:\"23\";s:5:\"price\";s:5:\"49.00\";}}', 'Moradabad,Uttar Pradesh', 52, 'D', '98.01', 1678602179),
+(10, 'a:2:{s:4:\"name\";s:9:\"Mohd Zaid\";s:5:\"phone\";s:11:\"09759955376\";}', 'a:1:{i:1;a:2:{s:10:\"product_id\";s:1:\"7\";s:5:\"price\";s:5:\"49.00\";}}', 'Moradabad,Uttar Pradesh', 52, 'C', '49.00', 1678602933),
+(11, 'a:2:{s:4:\"name\";s:9:\"Mohd Zaid\";s:5:\"phone\";s:11:\"09759955376\";}', 'a:2:{i:1;a:2:{s:10:\"product_id\";s:1:\"8\";s:5:\"price\";s:5:\"49.00\";}i:2;a:2:{s:10:\"product_id\";s:2:\"22\";s:5:\"price\";s:4:\"0.01\";}}', 'Moradabad,Uttar Pradesh', 52, 'D', '49.01', 1678603609),
+(12, 'a:2:{s:4:\"name\";s:9:\"Mohd Zaid\";s:5:\"phone\";s:11:\"09759955376\";}', 'a:2:{i:1;a:2:{s:10:\"product_id\";s:1:\"8\";s:5:\"price\";s:5:\"49.00\";}i:2;a:2:{s:10:\"product_id\";s:2:\"22\";s:5:\"price\";s:4:\"0.01\";}}', 'Moradabad,Uttar Pradesh', 52, 'D', '49.01', 1678603726),
+(13, 'a:2:{s:4:\"name\";s:9:\"Mohd Zaid\";s:5:\"phone\";s:11:\"09759955376\";}', 'a:2:{i:1;a:2:{s:10:\"product_id\";s:1:\"8\";s:5:\"price\";s:5:\"49.00\";}i:2;a:2:{s:10:\"product_id\";s:2:\"22\";s:5:\"price\";s:4:\"0.01\";}}', 'Moradabad,Uttar Pradesh', 52, 'D', '49.01', 1678603742),
+(14, 'a:2:{s:4:\"name\";s:9:\"Mohd Zaid\";s:5:\"phone\";s:11:\"09759955376\";}', 'a:2:{i:1;a:2:{s:10:\"product_id\";s:1:\"8\";s:5:\"price\";s:5:\"49.00\";}i:2;a:2:{s:10:\"product_id\";s:2:\"22\";s:5:\"price\";s:4:\"0.01\";}}', 'Moradabad,Uttar Pradesh', 52, 'D', '49.01', 1678603782),
+(15, 'a:2:{s:4:\"name\";s:9:\"Mohd Zaid\";s:5:\"phone\";s:11:\"09759955376\";}', 'a:2:{i:1;a:2:{s:10:\"product_id\";s:1:\"8\";s:5:\"price\";s:5:\"49.00\";}i:2;a:2:{s:10:\"product_id\";s:2:\"22\";s:5:\"price\";s:4:\"0.01\";}}', 'Moradabad,Uttar Pradesh', 52, 'D', '49.01', 1678603854),
+(16, 'a:2:{s:4:\"name\";s:9:\"Mohd Zaid\";s:5:\"phone\";s:11:\"09759955376\";}', 'a:2:{i:1;a:2:{s:10:\"product_id\";s:1:\"8\";s:5:\"price\";s:5:\"49.00\";}i:2;a:2:{s:10:\"product_id\";s:2:\"22\";s:5:\"price\";s:4:\"0.01\";}}', 'Moradabad,Uttar Pradesh', 52, 'D', '49.01', 1678603861),
+(17, 'a:2:{s:4:\"name\";s:9:\"Mohd Zaid\";s:5:\"phone\";s:11:\"09759955376\";}', 'a:2:{i:1;a:2:{s:10:\"product_id\";s:1:\"8\";s:5:\"price\";s:5:\"49.00\";}i:2;a:2:{s:10:\"product_id\";s:2:\"22\";s:5:\"price\";s:4:\"0.01\";}}', 'Moradabad,Uttar Pradesh', 52, 'D', '49.01', 1678604116),
+(18, 'a:2:{s:4:\"name\";s:9:\"Mohd Zaid\";s:5:\"phone\";s:11:\"09759955376\";}', 'a:2:{i:1;a:2:{s:10:\"product_id\";s:1:\"7\";s:5:\"price\";s:5:\"49.00\";}i:2;a:2:{s:10:\"product_id\";s:2:\"23\";s:5:\"price\";s:5:\"49.00\";}}', 'Moradabad,Uttar Pradesh', 52, 'D', '98.00', 1678604134),
+(19, 'a:2:{s:4:\"name\";s:9:\"Mohd Zaid\";s:5:\"phone\";s:11:\"09759955376\";}', 'a:2:{i:1;a:2:{s:10:\"product_id\";s:2:\"22\";s:5:\"price\";s:4:\"0.01\";}i:2;a:2:{s:10:\"product_id\";s:2:\"22\";s:5:\"price\";s:4:\"0.01\";}}', 'Moradabad,Uttar Pradesh', 52, 'D', '0.02', 1678605202);
 
 -- --------------------------------------------------------
 
@@ -828,6 +865,31 @@ INSERT INTO `product_descriptions` (`product_id`, `product`, `description`, `lan
 (23, 'Test Product', 'f', 'en'),
 (24, 'Test Product', 'ggg', 'ar'),
 (24, 'Test Product', 'ggg', 'en');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sales`
+--
+
+CREATE TABLE `sales` (
+  `sale_id` int NOT NULL,
+  `object_id` int NOT NULL,
+  `object_type` char(1) COLLATE utf8mb4_general_ci NOT NULL,
+  `data` longtext COLLATE utf8mb4_general_ci NOT NULL,
+  `total_price` decimal(10,2) NOT NULL,
+  `club_id` int NOT NULL,
+  `timestamp` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `sales`
+--
+
+INSERT INTO `sales` (`sale_id`, `object_id`, `object_type`, `data`, `total_price`, `club_id`, `timestamp`) VALUES
+(2, 17, 'O', 'a:7:{s:8:\"products\";a:2:{i:1;a:2:{s:10:\"product_id\";s:1:\"8\";s:5:\"price\";s:5:\"49.00\";}i:2;a:2:{s:10:\"product_id\";s:2:\"22\";s:5:\"price\";s:4:\"0.01\";}}s:6:\"amount\";s:2:\"99\";s:9:\"user_data\";a:2:{s:4:\"name\";s:9:\"Mohd Zaid\";s:5:\"phone\";s:11:\"09759955376\";}s:16:\"shipping_address\";s:23:\"Moradabad,Uttar Pradesh\";s:6:\"status\";s:1:\"D\";s:12:\"create_order\";s:14:\"__create_order\";s:7:\"club_id\";s:2:\"52\";}', '49.01', 52, 1678604116),
+(3, 18, 'O', 'a:7:{s:8:\"products\";a:2:{i:1;a:2:{s:10:\"product_id\";s:1:\"7\";s:5:\"price\";s:5:\"49.00\";}i:2;a:2:{s:10:\"product_id\";s:2:\"23\";s:5:\"price\";s:5:\"49.00\";}}s:6:\"amount\";s:2:\"15\";s:9:\"user_data\";a:2:{s:4:\"name\";s:9:\"Mohd Zaid\";s:5:\"phone\";s:11:\"09759955376\";}s:16:\"shipping_address\";s:23:\"Moradabad,Uttar Pradesh\";s:6:\"status\";s:1:\"D\";s:12:\"create_order\";s:14:\"__create_order\";s:7:\"club_id\";s:2:\"52\";}', '98.00', 52, 1678604134),
+(4, 17, 'B', 'a:10:{s:7:\"game_id\";s:2:\"38\";s:9:\"object_id\";s:2:\"12\";s:6:\"object\";s:1:\"T\";s:4:\"name\";s:9:\"Mohd Zaid\";s:5:\"email\";s:15:\"admin@gmail.com\";s:5:\"phone\";s:11:\"09759955376\";s:12:\"booking_from\";s:16:\"2023-03-13T12:26\";s:10:\"booking_to\";s:16:\"2023-03-15T12:26\";s:11:\"add_booking\";s:10:\"__book_now\";s:7:\"club_id\";s:2:\"52\";}', '0.00', 52, 1678604296);
 
 -- --------------------------------------------------------
 
@@ -967,6 +1029,29 @@ INSERT INTO `subscription_descriptions` (`subscription_id`, `subscription`, `des
 (4, 'Silver', 'Design, photograph, download and publish products The club has 21 - 40 products.\r\nIn the event of content modification and image change 35 dirhams for each amendment', 'en'),
 (5, 'Goldedtttt', 'ggg', 'ar'),
 (5, 'Golded Endee', 'Design, photograph, download and publish products The club has 20 products.\r\nIn the event of content modification and image change 50 dirhams for each amendment', 'en');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `suppliers`
+--
+
+CREATE TABLE `suppliers` (
+  `supplier_id` int NOT NULL,
+  `name` varchar(155) COLLATE utf8mb4_general_ci NOT NULL,
+  `address` text COLLATE utf8mb4_general_ci NOT NULL,
+  `product_or_services` text COLLATE utf8mb4_general_ci NOT NULL,
+  `club_id` int NOT NULL,
+  `timestamp` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `suppliers`
+--
+
+INSERT INTO `suppliers` (`supplier_id`, `name`, `address`, `product_or_services`, `club_id`, `timestamp`) VALUES
+(1, 'test supplier', 'tesd address', 'srfffffsssssss', 52, 1678607764),
+(2, 'test more', 'adddd', 'srfffff', 52, 1678608393);
 
 -- --------------------------------------------------------
 
@@ -1251,6 +1336,12 @@ ALTER TABLE `customer_feedback`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `expenses`
+--
+ALTER TABLE `expenses`
+  ADD PRIMARY KEY (`expense_id`);
+
+--
 -- Indexes for table `games`
 --
 ALTER TABLE `games`
@@ -1359,6 +1450,12 @@ ALTER TABLE `product_descriptions`
   ADD UNIQUE KEY `product_id` (`product_id`,`lang_code`);
 
 --
+-- Indexes for table `sales`
+--
+ALTER TABLE `sales`
+  ADD PRIMARY KEY (`sale_id`);
+
+--
 -- Indexes for table `slider`
 --
 ALTER TABLE `slider`
@@ -1387,6 +1484,12 @@ ALTER TABLE `subscriptions`
 --
 ALTER TABLE `subscription_descriptions`
   ADD UNIQUE KEY `subscription_id` (`subscription_id`,`lang_code`);
+
+--
+-- Indexes for table `suppliers`
+--
+ALTER TABLE `suppliers`
+  ADD PRIMARY KEY (`supplier_id`);
 
 --
 -- Indexes for table `tournaments`
@@ -1447,7 +1550,7 @@ ALTER TABLE `admin_info`
 -- AUTO_INCREMENT for table `bookings`
 --
 ALTER TABLE `bookings`
-  MODIFY `booking_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `booking_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -1472,6 +1575,12 @@ ALTER TABLE `cupon`
 --
 ALTER TABLE `customer_feedback`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `expenses`
+--
+ALTER TABLE `expenses`
+  MODIFY `expense_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `games`
@@ -1531,13 +1640,19 @@ ALTER TABLE `notifications`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `order_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
   MODIFY `product_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+
+--
+-- AUTO_INCREMENT for table `sales`
+--
+ALTER TABLE `sales`
+  MODIFY `sale_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `slider`
@@ -1556,6 +1671,12 @@ ALTER TABLE `sponsors`
 --
 ALTER TABLE `subscriptions`
   MODIFY `subscription_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `suppliers`
+--
+ALTER TABLE `suppliers`
+  MODIFY `supplier_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tournaments`

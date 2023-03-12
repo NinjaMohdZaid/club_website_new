@@ -67,7 +67,7 @@
                 ?>
             </td>
             
-            <td><a href="?action=delete&&order_id=<?php echo $order['order_id'] ?>"><?php echo $obj->__('deleted',$_SESSION['auth']['default_lang']); ?></a>  </td>
+            <td><a href="?action=delete&&order_id=<?php echo $order['order_id'] ?>"><?php echo $obj->__('delete',$_SESSION['auth']['default_lang']); ?></a>  </td>
 
         </tr>
         <?php }?>

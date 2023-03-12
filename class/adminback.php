@@ -226,6 +226,34 @@ class  adminback
             }
         }
     }
+    function update_supplier($data)
+    {
+        $supplier_id = $data['supplier_id'];
+        $name = $data['name'];
+        $address = $data['address'];
+        $product_or_services = $data['product_or_services'];
+        $query = "UPDATE `suppliers` SET `name`='$name',`address`='$address',`product_or_services`= '$product_or_services' WHERE `supplier_id` = '$supplier_id'";
+        if (mysqli_query($this->connection, $query)) {
+           return true;
+        }else{
+            return false;
+        }
+    }
+    function update_expense($data)
+    {
+        $expense_id = $data['expense_id'];
+        $name = $data['name'];
+        $description = $data['description'];
+        $supplier_id = $data['supplier_id'];
+        $timestamp = strtotime($data['date']);
+        $amount = $data['amount'];
+        $query = "UPDATE `expenses` SET `name`='$name',`description`='$description',`supplier_id`= '$supplier_id',`timestamp`= '$timestamp',`amount`= '$amount' WHERE `expense_id` = '$expense_id'";
+        if (mysqli_query($this->connection, $query)) {
+           return true;
+        }else{
+            return false;
+        }
+    }
     function add_subscription($data)
     {
         $validity_months = $data['validity_months'];
@@ -250,6 +278,17 @@ class  adminback
             }
         } else {
             return "Failed to add subscription";
+        }
+    }
+    function add_sales($object_id,$object_type,$data,$total_price,$club_id)
+    {
+        $timestamp = time();
+        $query = "INSERT INTO `sales`( `object_id`,`object_type`, `data`,`total_price`,`club_id`,`timestamp`) VALUES ('$object_id','$object_type', '$data','$total_price','$club_id','$timestamp')";
+        if (mysqli_query($this->connection, $query)) {
+            $sale_id = $this->connection->insert_id; //sale_id
+            return $sale_id;
+        } else {
+            return false;
         }
     }
     function add_table($data,$game_id,$club_id)
@@ -433,6 +472,10 @@ class  adminback
         $query = "INSERT INTO `bookings`( `name`,`email`, `phone`,`game_id`,`club_id`,`price`,`booking_from`,`booking_to`, `timestamp`,`object`,`object_id`) VALUES ('$name','$email', '$phone','$game_id','$club_id','$price','$booking_from','$booking_to','$timestamp','$object','$object_id')";
         if (mysqli_query($this->connection, $query)) {
             $booking_id = $this->connection->insert_id; //
+            if(!empty($booking_id) && !empty($club_id)){
+                $booking_data = serialize($data);
+                $this->add_sales($booking_id,'B',$booking_data,$price,$club_id);
+            }
             return $booking_id;
         } else {
             return false;
@@ -1243,6 +1286,118 @@ class  adminback
         }
         return [!empty($jobs) ? $jobs : [], !empty($params) ? $params : []];
     }
+    function display_sales($club_id,$params = array(),$items_per_page = 0)
+    {
+        $default_params = array(
+            'page' => 1,
+            'items_per_page' => $items_per_page
+        );
+
+        $params = array_merge($default_params, $params);
+        $condition = $limit = $join = '';
+        if(!empty($params['filter_by'])){
+            if($params['filter_by'] == 'T'){
+                $current_timestamp = time(); 
+                $beginning_of_day = strtotime("midnight", $current_timestamp);
+                $end_of_day = strtotime("tomorrow", $current_timestamp) - 1;
+                $condition .= " AND timestamp BETWEEN $beginning_of_day AND $end_of_day";
+            }elseif($params['filter_by'] == 'W'){
+                $day = date('w');
+                $week_start = strtotime('-'.$day.' days');
+                $week_end = strtotime('+'.(6-$day).' days');
+                $condition .= " AND timestamp BETWEEN $week_start AND $week_end";
+            }elseif($params['filter_by'] == 'M'){
+                $day = date('w');
+                $month_start = strtotime('first day of this month', time());
+                $month_end = strtotime('last day of this month', time());
+                $condition .= " AND timestamp BETWEEN $month_start AND $month_end";
+            }elseif($params['filter_by'] == 'Y'){
+                $day = date('w');
+                $year_start = strtotime('first day of January', time());
+                $year_end = strtotime('last day of December', time());
+                $condition .= " AND timestamp BETWEEN $year_start AND $year_end";
+            }
+        }
+        $fields = "sales.*";
+        if (!empty($params['object_type'])) {
+            $condition .= " AND sales.object_type = '" . $params['object_type'] . "'";
+        }
+       
+        $condition .= " AND sales.club_id = '" . $club_id . "'";
+        $query = "SELECT $fields FROM sales $join where 1 $condition";
+        if (mysqli_query($this->connection, $query)) {
+            $result = mysqli_query($this->connection, $query);
+            $sales = mysqli_fetch_all($result, MYSQLI_ASSOC);
+        }
+        return [!empty($sales) ? $sales : [], !empty($params) ? $params : []];
+    }
+    function display_suppliers($club_id,$params = array(),$items_per_page = 0)
+    {
+        $default_params = array(
+            'page' => 1,
+            'items_per_page' => $items_per_page
+        );
+
+        $params = array_merge($default_params, $params);
+        $condition = $limit = $join = '';
+        $fields = "suppliers.*";
+        // if (!empty($params['object_type'])) {
+        //     $condition .= " AND suppliers.object_type = '" . $params['object_type'] . "'";
+        // }
+       
+        $condition .= " AND suppliers.club_id = '" . $club_id . "'";
+        $query = "SELECT $fields FROM suppliers $join where 1 $condition";
+        if (mysqli_query($this->connection, $query)) {
+            $result = mysqli_query($this->connection, $query);
+            $suppliers = mysqli_fetch_all($result, MYSQLI_ASSOC);
+        }
+        return [!empty($suppliers) ? $suppliers : [], !empty($params) ? $params : []];
+    }
+    function display_expenses($club_id,$params = array(),$items_per_page = 0)
+    {
+        $default_params = array(
+            'page' => 1,
+            'items_per_page' => $items_per_page
+        );
+
+        $params = array_merge($default_params, $params);
+        $condition = $limit = $join = '';
+        $fields = "expenses.*,suppliers.name as supplier_name";
+        // if (!empty($params['object_type'])) {
+        //     $condition .= " AND suppliers.object_type = '" . $params['object_type'] . "'";
+        // }
+        $join .= " INNER JOIN suppliers ON expenses.supplier_id = suppliers.supplier_id";
+        $condition .= " AND expenses.club_id = '" . $club_id . "'";
+        if(!empty($params['filter_by'])){
+            if($params['filter_by'] == 'T'){
+                $current_timestamp = time(); 
+                $beginning_of_day = strtotime("midnight", $current_timestamp);
+                $end_of_day = strtotime("tomorrow", $current_timestamp) - 1;
+                $condition .= " AND timestamp BETWEEN $beginning_of_day AND $end_of_day";
+            }elseif($params['filter_by'] == 'W'){
+                $day = date('w');
+                $week_start = strtotime('-'.$day.' days');
+                $week_end = strtotime('+'.(6-$day).' days');
+                $condition .= " AND timestamp BETWEEN $week_start AND $week_end";
+            }elseif($params['filter_by'] == 'M'){
+                $day = date('w');
+                $month_start = strtotime('first day of this month', time());
+                $month_end = strtotime('last day of this month', time());
+                $condition .= " AND timestamp BETWEEN $month_start AND $month_end";
+            }elseif($params['filter_by'] == 'Y'){
+                $day = date('w');
+                $year_start = strtotime('first day of January', time());
+                $year_end = strtotime('last day of December', time());
+                $condition .= " AND timestamp BETWEEN $year_start AND $year_end";
+            }
+        }
+        $query = "SELECT $fields FROM expenses $join where 1 $condition";
+        if (mysqli_query($this->connection, $query)) {
+            $result = mysqli_query($this->connection, $query);
+            $expenses = mysqli_fetch_all($result, MYSQLI_ASSOC);
+        }
+        return [!empty($expenses) ? $expenses : [], !empty($params) ? $params : []];
+    }
     function display_job_applicants($job_id, $items_per_page = 0)
     {
         $condition = $limit = $join = '';
@@ -1368,6 +1523,27 @@ class  adminback
                         unlink($file);
                 }
             }
+            return true;
+        }
+    }
+    function delete_sales($id)
+    {
+        $query = "DELETE FROM `sales` WHERE  `sale_id` = '$id'";
+        if (mysqli_query($this->connection, $query)) {
+            return true;
+        }
+    }
+    function delete_supplier($id)
+    {
+        $query = "DELETE FROM `suppliers` WHERE  `supplier_id` = '$id'";
+        if (mysqli_query($this->connection, $query)) {
+            return true;
+        }
+    }
+    function delete_expense($id)
+    {
+        $query = "DELETE FROM `expenses` WHERE  `expense_id` = '$id'";
+        if (mysqli_query($this->connection, $query)) {
             return true;
         }
     }
@@ -1627,6 +1803,40 @@ class  adminback
                     }
                 }
                 return $table_data;
+            } else {
+                return false;
+            }
+        }
+    }
+    function display_supplierByID($id)
+    {
+        $condition = $join = '';
+        $fields = "suppliers.*";
+        $condition .= " AND suppliers.supplier_id = '$id'";
+        $query = "SELECT $fields FROM suppliers $join where 1 $condition";
+
+        if (mysqli_query($this->connection, $query)) {
+            $supplier_data = mysqli_query($this->connection, $query);
+            $supplier_data = mysqli_fetch_array($supplier_data, MYSQLI_ASSOC);
+            if (!empty($supplier_data)) {
+                return $supplier_data;
+            } else {
+                return false;
+            }
+        }
+    }
+    function display_expenseByID($id)
+    {
+        $condition = $join = '';
+        $fields = "expenses.*";
+        $condition .= " AND expenses.expense_id = '$id'";
+        $query = "SELECT $fields FROM expenses $join where 1 $condition";
+
+        if (mysqli_query($this->connection, $query)) {
+            $expense_data = mysqli_query($this->connection, $query);
+            $expense_data = mysqli_fetch_array($expense_data, MYSQLI_ASSOC);
+            if (!empty($expense_data)) {
+                return $expense_data;
             } else {
                 return false;
             }
@@ -2640,6 +2850,39 @@ class  adminback
             return $add_msg;
         }
     }
+    function add_supplier($data)
+    {
+        $name = $data['name'];
+        $address = $data['address'];
+        $product_or_services = $data['product_or_services'];
+        $club_id = $data['club_id'];
+        $timestamp = time();
+
+        $query = "INSERT INTO `suppliers`( `name`, `address`, `product_or_services`, `club_id`,`timestamp`) VALUES ('$name','$address','$product_or_services','$club_id','$timestamp')";
+
+        if (mysqli_query($this->connection, $query)) {
+            $supplier_id = $this->connection->insert_id;
+            return $supplier_id;
+        }else{
+            return false;
+        }
+    }
+    function add_expenses($data)
+    {
+        $name = $data['name'];
+        $description = $data['description'];
+        $supplier_id = $data['supplier_id'];
+        $timestamp = strtotime($data['date']);
+        $club_id = $data['club_id'];
+        $amount = $data['amount'];
+        $query = "INSERT INTO `expenses`( `name`, `supplier_id`, `description`, `club_id`,`timestamp`,`amount`) VALUES ('$name','$supplier_id','$description','$club_id','$timestamp','$amount')";
+        if (mysqli_query($this->connection, $query)) {
+            $supplier_id = $this->connection->insert_id;
+            return $supplier_id;
+        }else{
+            return false;
+        }
+    }
 
     function show_coupon($params = [],$items_per_page= 0,$lang_code='en')
     {
@@ -2943,7 +3186,14 @@ class  adminback
         }
         $query = "INSERT INTO `orders`(`user_data`,`products_data`,`shipping_address`,`club_id`,`status`,`price`,`timestamp`) VALUES ('$user_data','$products_data','$shipping_address','$club_id','$status','$price','$timestamp')";
         if (mysqli_query($this->connection, $query)) {
-            return true;
+            $order_id = $this->connection->insert_id;
+            if($status == 'D' && !empty($club_id)){
+                $order_data = serialize($data);
+                $this->add_sales($order_id,'O',$order_data,$price,$club_id);
+            }
+            return $order_id;
+        }else{
+            return false;
         }
     }
     function display_orders($params = [],$items_per_page=0){

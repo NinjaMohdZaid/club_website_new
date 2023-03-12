@@ -58,9 +58,9 @@ if(isset($_POST['register_club'])){
                                 <div class="d-flex">
                                     <div class="input-group mr-2">
                                         <select name="type" class="form-control" required>
-                                            <option value=""><?php echo $obj->__('type_of_club',$_SESSION['default_lang']); ?></option>
-                                            <option value="C"><?php echo $obj->__('commercial',$_SESSION['default_lang']); ?></option>
-                                            <option value="G"><?php echo $obj->__('government',$_SESSION['default_lang']); ?></option>
+                                            <option value="">Type of club</option>
+                                            <option value="C">Commercial</option>
+                                            <option value="G">Government</option>
                                         </select>    
                                     </div>
                                     <div class="input-group mr-2">

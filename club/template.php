@@ -179,7 +179,23 @@ require ("../class/adminback.php");
                                             include ("views/report_view.php");
                                         }elseif($views=='edit_sponsor'){
                                             include ("views/edit_sponsor_view.php");
-                                        }           
+                                        }elseif($views=='add_sales'){
+                                            include ("views/add_sales_view.php");
+                                        }elseif($views=='view_sales'){
+                                            include ("views/view_sales_view.php");
+                                        }elseif($views=='add_supplier'){
+                                            include ("views/add_supplier_view.php");
+                                        }elseif($views=='manage_suppliers'){
+                                            include ("views/manage_suppliers_view.php");
+                                        }elseif($views=='edit_supplier'){
+                                            include ("views/edit_supplier_view.php");
+                                        }elseif($views=='add_expenses'){
+                                            include ("views/add_expenses_view.php");
+                                        }elseif($views=='manage_expenses'){
+                                            include ("views/manage_expenses_view.php");
+                                        }elseif($views=='edit_expenses'){
+                                            include ("views/edit_expenses_view.php");
+                                        }                 
                                     }
                                 ?>
 

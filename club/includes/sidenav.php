@@ -280,6 +280,7 @@ $current_file = $break[count($break) - 1];
                     </li>
                 </ul>
             </li>
+            
             <li class="pcoded-hasmenu <?php if ($current_file == 'edit_club.php') echo 'active pcoded-trigger complete'; ?>">
                 <a href="javascript:void(0)">
                     <span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i></span>
@@ -292,6 +293,57 @@ $current_file = $break[count($break) - 1];
                         <a href="edit_club.php">
                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                             <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs" style="font-weight: 400;"><?php echo $obj->__('update_club', $_SESSION['auth']['default_lang']); ?></span>
+                            <span class="pcoded-mcaret"></span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="pcoded-hasmenu  <?php if ($current_file == 'add_sales.php' || $current_file == 'view_sales.php' || $current_file == 'edit_expenses.php' || $current_file == 'add_supplier.php' || $current_file == 'manage_suppliers.php' || $current_file == 'edit_supplier.php' || $current_file == 'add_expenses.php' || $current_file == 'manage_expenses.php') echo 'active pcoded-trigger complete'; ?>">
+                <a href="javascript:void(0)">
+                    <span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i></span>
+                    <span class="pcoded-mtext" data-i18n="nav.basic-components.main"><?php echo $obj->__('finance', $_SESSION['auth']['default_lang']); ?></span>
+                    <span class="pcoded-mcaret"></span>
+                </a>
+                <ul class="pcoded-submenu">
+                    <li class="<?php if ($current_file == 'add_sales.php') echo 'active'; ?>">
+                        <a href="add_sales.php">
+                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                            <span class="pcoded-mtext" data-i18n="nav.basic-components.alert" style="font-weight: 400;"><?php echo $obj->__('add_sales', $_SESSION['auth']['default_lang']); ?></span>
+                            <span class="pcoded-mcaret"></span>
+                        </a>
+                    </li>
+                    <li class="<?php if ($current_file == 'view_sales.php') echo 'active'; ?>">
+                        <a href="view_sales.php">
+                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                            <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs" style="font-weight: 400;"><?php echo $obj->__('view_sales', $_SESSION['auth']['default_lang']); ?></span>
+                            <span class="pcoded-mcaret"></span>
+                        </a>
+                    </li>
+                    <li class="<?php if ($current_file == 'add_supplier.php') echo 'active'; ?>">
+                        <a href="add_supplier.php">
+                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                            <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs" style="font-weight: 400;"><?php echo $obj->__('add_supplier', $_SESSION['auth']['default_lang']); ?></span>
+                            <span class="pcoded-mcaret"></span>
+                        </a>
+                    </li>
+                    <li class="<?php if ($current_file == 'manage_suppliers.php') echo 'active'; ?>">
+                        <a href="manage_suppliers.php">
+                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                            <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs" style="font-weight: 400;"><?php echo $obj->__('view_suppliers', $_SESSION['auth']['default_lang']); ?></span>
+                            <span class="pcoded-mcaret"></span>
+                        </a>
+                    </li>
+                    <li class="<?php if ($current_file == 'add_expenses.php') echo 'active'; ?>">
+                        <a href="add_expenses.php">
+                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                            <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs" style="font-weight: 400;"><?php echo $obj->__('add_expenses', $_SESSION['auth']['default_lang']); ?></span>
+                            <span class="pcoded-mcaret"></span>
+                        </a>
+                    </li>
+                    <li class="<?php if ($current_file == 'manage_expenses.php') echo 'active'; ?>">
+                        <a href="manage_expenses.php">
+                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                            <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs" style="font-weight: 400;"><?php echo $obj->__('view_expenses', $_SESSION['auth']['default_lang']); ?></span>
                             <span class="pcoded-mcaret"></span>
                         </a>
                     </li>
