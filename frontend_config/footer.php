@@ -14,6 +14,9 @@
     $club_lgn_snp_link = 'club';
     $admin_lgn_link = 'admin';
     $paymnt_logo = 'frontend_config/images/cllllb6.png';
+	$refund_policy_link = 'frontend_config/refund_policy.php';
+	$delivery_policy_link = 'frontend_config/delivery_policy.php';
+	$cancellation_policy_link = 'frontend_config/cancellation_policy.php';
   }else{
     $index_link = '../';
     $about_us_link = 'aboutus.php';
@@ -26,6 +29,9 @@
     $club_lgn_snp_link = '../club';
     $admin_lgn_link = '../admin';
     $paymnt_logo = 'images/cllllb6.png';
+	$refund_policy_link = 'refund_policy.php';
+	$delivery_policy_link = 'delivery_policy.php';
+	$cancellation_policy_link = 'cancellation_policy.php';
   }
 echo '<section class="section-no-border mb-3 bg-dark text-light">
     <footer class="page-footer font-small stylish-color-dark pt-4" style="padding-left: 0px;">
@@ -94,10 +100,15 @@ echo '<section class="section-no-border mb-3 bg-dark text-light">
                             <a class="text-sw" href="'.$privacy_policy_link.'">Privacy Policy</a>
                         </li>
                         <li>
-                            <a class="text-sw" href="#!">Shipping Policy</a>
+                            <a class="text-sw" href="'.$delivery_policy_link.'">Delivery Policy</a>
                         </li>
                         <li>
-                            <a class="text-sw" href="#!">Return And Refund Policy</a>
+						
+                            <a class="text-sw" href="'.$refund_policy_link.'">Refunds Policy</a>
+                        </li>
+						<li>
+						
+                            <a class="text-sw" href="'.$cancellation_policy_link.'">Cancellation Policy</a>
                         </li>
                         <li>
                             <a class="text-sw" href="'.$terms_of_use_link.'">Terms Of Use</a>
@@ -119,7 +130,7 @@ echo '<section class="section-no-border mb-3 bg-dark text-light">
                         <li>
                             <p><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill text-sw" viewBox="0 0 16 16">
                                     <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" />
-                                </svg> Hamdan Center for Creativity and Innovation - Port Said - Diera - Office T86</p>
+                                </svg> Hamdan Center for Creativity and Innovation - Port Said - Diera - Office T86, Dubai, United Arab Emirates.</p>
                         </li>
                         <li>
                             <p><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill text-sw" viewBox="0 0 16 16">
